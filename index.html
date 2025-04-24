@@ -541,13 +541,13 @@
             <div class="flex flex-wrap items-start">
                 <div class="w-full lg:w-3/4">
                     <h3 id="skill-details-title" class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i id="skill-icon" class="fas fa-lightbulb mr-3 text-blue-500"></i>
-                        <span>Curiosity</span>
+                        <i id="skill-icon" class="fas fa-star mr-3 text-yellow-500"></i>
+                        <span>Select a skill to view details</span>
                     </h3>
-                    <p id="skill-details-description" class="text-gray-700 mb-6 text-lg">A strong desire to learn or know something; an inquisitive mindset that drives exploration and understanding.</p>
+                    <p id="skill-details-description" class="text-gray-700 mb-6 text-lg">Click on any skill from the pillars above to see its detailed description and development path.</p>
                 </div>
                 <div class="w-full lg:w-1/4 flex justify-end mb-4 lg:mb-0">
-                    <div class="pill bg-blue-100 px-4 py-2 rounded-full text-sm font-medium text-blue-700" id="skill-pillar">Thinking & Problem Solving</div>
+                    <div class="pill bg-gray-100 px-4 py-2 rounded-full text-sm font-medium" id="skill-pillar">Select a skill</div>
                 </div>
             </div>
             
@@ -559,7 +559,7 @@
                         <h5 class="font-bold text-blue-700 flex items-center mb-2">
                             <i class="fas fa-book mr-2"></i> Learn
                         </h5>
-                        <p id="skill-learn" class="text-gray-700">Read widely across different subjects, ask "why" and "how" questions frequently, follow your interests down rabbit holes.</p>
+                        <p id="skill-learn" class="text-gray-700"></p>
                         <div class="progress-bar bg-blue-100">
                             <div class="progress-step bg-blue-500" style="width: 25%"></div>
                         </div>
@@ -570,7 +570,7 @@
                         <h5 class="font-bold text-green-700 flex items-center mb-2">
                             <i class="fas fa-tools mr-2"></i> Build
                         </h5>
-                        <p id="skill-build" class="text-gray-700">Engage in new experiences, visit museums or new places, take online courses on diverse topics, subscribe to newsletters that challenge your perspectives.</p>
+                        <p id="skill-build" class="text-gray-700"></p>
                         <div class="progress-bar bg-green-100">
                             <div class="progress-step bg-green-500" style="width: 50%"></div>
                         </div>
@@ -581,7 +581,7 @@
                         <h5 class="font-bold text-yellow-700 flex items-center mb-2">
                             <i class="fas fa-dumbbell mr-2"></i> Train
                         </h5>
-                        <p id="skill-train" class="text-gray-700">Set aside dedicated time for undirected learning or exploration each week.</p>
+                        <p id="skill-train" class="text-gray-700"></p>
                         <div class="progress-bar bg-yellow-100">
                             <div class="progress-step bg-yellow-500" style="width: 75%"></div>
                         </div>
@@ -592,7 +592,7 @@
                         <h5 class="font-bold text-purple-700 flex items-center mb-2">
                             <i class="fas fa-crown mr-2"></i> Mastery
                         </h5>
-                        <p id="skill-mastery" class="text-gray-700">Continuously seek out novel information and experiences, connect seemingly unrelated ideas, become a lifelong learner.</p>
+                        <p id="skill-mastery" class="text-gray-700"></p>
                         <div class="progress-bar bg-purple-100">
                             <div class="progress-step bg-purple-500" style="width: 100%"></div>
                         </div>
@@ -602,55 +602,38 @@
             
             <div class="mt-8">
                 <h4 class="text-xl font-semibold mb-4 text-gray-700">Related Skills</h4>
-                <div id="related-skills" class="flex flex-wrap gap-2">
-                    <button class="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg text-sm font-medium mb-2 mr-2 hover:bg-blue-200 transition flex items-center">
-                        <i class="fas fa-balance-scale mr-2"></i>Critical Thinking
-                    </button>
-                    <button class="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg text-sm font-medium mb-2 mr-2 hover:bg-blue-200 transition flex items-center">
-                        <i class="fas fa-palette mr-2"></i>Creativity
-                    </button>
-                    <button class="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg text-sm font-medium mb-2 mr-2 hover:bg-blue-200 transition flex items-center">
-                        <i class="fas fa-sync-alt mr-2"></i>Adaptability
-                    </button>
-                    <button class="bg-green-100 text-green-700 px-3 py-2 rounded-lg text-sm font-medium mb-2 mr-2 hover:bg-green-200 transition flex items-center">
-                        <i class="fas fa-headphones mr-2"></i>Active Listening
-                    </button>
-                    <button class="bg-red-100 text-red-700 px-3 py-2 rounded-lg text-sm font-medium mb-2 mr-2 hover:bg-red-200 transition flex items-center">
-                        <i class="fas fa-hand-holding-heart mr-2"></i>Empathy
-                    </button>
-                </div>
+                <div id="related-skills" class="flex flex-wrap gap-2"></div>
             </div>
             
             <!-- Real-world application examples -->
             <div class="mt-8 border-t pt-6">
                 <button id="toggle-examples" class="flex items-center text-xl font-semibold mb-4 text-gray-700">
-                    <i class="fas fa-chevron-down mr-2 transition-transform rotate-180" id="examples-chevron"></i>
+                    <i class="fas fa-chevron-right mr-2 transition-transform" id="examples-chevron"></i>
                     Real-World Applications
                 </button>
                 
-                <div id="examples-content" class="">
+                <div id="examples-content" class="hidden">
                     <div class="bg-gray-50 rounded-lg p-5">
-                        <p class="text-sm text-blue-600 italic mb-3">Currently showing examples for Curiosity. Click on any other skill to see its specific applications.</p>
-                        <h5 class="font-bold text-lg mb-3" id="example-title">How Curiosity Is Applied</h5>
+                        <h5 class="font-bold text-lg mb-3" id="example-title">How This Skill Is Applied</h5>
                         <div id="example-workplace" class="mb-4">
                             <h6 class="font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-briefcase text-gray-600 mr-2"></i>In the Workplace
                             </h6>
-                            <p id="workplace-example" class="text-gray-700">A UX researcher who consistently asks 'why' questions during user interviews, uncovering deeper needs that competitors miss, resulting in more innovative product features.</p>
+                            <p id="workplace-example" class="text-gray-700">Example will appear here when a skill is selected.</p>
                         </div>
                         
                         <div id="example-leadership" class="mb-4">
                             <h6 class="font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-users text-gray-600 mr-2"></i>For Leadership
                             </h6>
-                            <p id="leadership-example" class="text-gray-700">A team leader who encourages staff to spend 10% of their time exploring new technologies, creating a culture where continuous learning drives innovation.</p>
+                            <p id="leadership-example" class="text-gray-700">Example will appear here when a skill is selected.</p>
                         </div>
                         
                         <div id="example-personal">
                             <h6 class="font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-heart text-gray-600 mr-2"></i>Personal Development
                             </h6>
-                            <p id="personal-example" class="text-gray-700">Taking a different route home each week, trying new cuisines monthly, or subscribing to a magazine outside your usual interests to expand your worldview.</p>
+                            <p id="personal-example" class="text-gray-700">Example will appear here when a skill is selected.</p>
                         </div>
                     </div>
                 </div>
@@ -1389,3 +1372,555 @@
                 interactionDescriptionDiv.classList.add('visible');
             }
         }
+
+        // Handle skill mouseout event
+        function handleMouseOut() {
+            // Remove highlight from all skills
+            skillItems.forEach(item => {
+                item.classList.remove('highlight');
+            });
+
+            // Hide interaction description if no skill details are shown
+            if (!skillDetailsDiv.classList.contains('visible')) {
+                interactionDescriptionDiv.classList.remove('visible');
+                setTimeout(() => {
+                    if (!interactionDescriptionDiv.classList.contains('visible')) {
+                        interactionDescriptionDiv.innerHTML = '<i class="fas fa-info-circle mr-2 text-blue-500"></i><span>Hover over a skill to see its connections. Click a skill for detailed development steps.</span>';
+                    }
+                }, 500);
+            }
+        }
+
+        // Handle skill click event
+        function handleClick(event) {
+            const clickedSkillId = event.target.closest('.skill-item').id;
+            const skillInfo = skillData[clickedSkillId];
+
+            // Remove active class from all skills
+            skillItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            if (skillInfo) {
+                // Add active class to clicked skill
+                event.target.closest('.skill-item').classList.add('active');
+
+                // Update skill details
+                skillDetailsTitle.innerHTML = `<i class="fas fa-${skillInfo.icon.split('-')[1]} mr-3 text-${skillInfo.color}-500"></i><span>${skillInfo.name}</span>`;
+                skillDetailsDescription.textContent = skillInfo.description;
+                skillPillar.textContent = skillInfo.pillar;
+                skillPillar.className = `pill bg-${skillInfo.color}-100 text-${skillInfo.color}-700 px-4 py-2 rounded-full text-sm font-medium`;
+                skillIcon.className = `fas ${skillInfo.icon} mr-3 text-${skillInfo.color}-500`;
+
+                // Update development paths
+                skillLearn.textContent = skillInfo.development.learn;
+                skillBuild.textContent = skillInfo.development.build;
+                skillTrain.textContent = skillInfo.development.train;
+                skillMastery.textContent = skillInfo.development.mastery;
+
+                // Update related skills
+                relatedSkillsDiv.innerHTML = '';
+                if (skillInfo.related && skillInfo.related.length > 0) {
+                    skillInfo.related.forEach(relatedId => {
+                        const relatedSkillInfo = skillData[relatedId];
+                        if (relatedSkillInfo) {
+                            const relatedButton = document.createElement('button');
+                            relatedButton.className = `bg-${relatedSkillInfo.color}-100 text-${relatedSkillInfo.color}-700 px-3 py-2 rounded-lg text-sm font-medium mb-2 mr-2 hover:bg-${relatedSkillInfo.color}-200 transition flex items-center`;
+                            relatedButton.innerHTML = `<i class="fas ${relatedSkillInfo.icon} mr-2"></i>${relatedSkillInfo.name}`;
+                            relatedButton.addEventListener('click', () => {
+                                // Find and click the related skill item
+                                const relatedSkillElement = document.getElementById(relatedId);
+                                if (relatedSkillElement) {
+                                    relatedSkillElement.click();
+                                    relatedSkillElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                            });
+                            relatedSkillsDiv.appendChild(relatedButton);
+                        }
+                    });
+                } else {
+                    relatedSkillsDiv.innerHTML = '<p class="text-gray-500">No related skills defined.</p>';
+                }
+
+                // Show details area with animation
+                skillDetailsDiv.classList.add('visible');
+                
+                // Update interaction description
+                interactionDescriptionDiv.innerHTML = `<i class="fas fa-info-circle mr-2 text-blue-500"></i> Viewing details for <strong>${skillInfo.name}</strong>. Hover over other skills to see connections.`;
+                interactionDescriptionDiv.classList.add('visible');
+
+                // Scroll to details if not in view
+                if (!isElementInViewport(skillDetailsDiv)) {
+                    skillDetailsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+
+        // Search functionality
+        searchInput.addEventListener('input', handleSearch);
+
+        function handleSearch(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            
+            skillItems.forEach(item => {
+                const skillId = item.id;
+                const skillInfo = skillData[skillId];
+                const skillName = skillInfo.name.toLowerCase();
+                const skillDescription = skillInfo.description.toLowerCase();
+                
+                if (skillName.includes(searchTerm) || skillDescription.includes(searchTerm)) {
+                    item.style.display = '';
+                    // Highlight the search term in the item text
+                    if (searchTerm.length > 0) {
+                        item.classList.add('bg-yellow-50');
+                    } else {
+                        item.classList.remove('bg-yellow-50');
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Filter functionality
+        filterThinking.addEventListener('click', () => filterSkills('Thinking & Problem Solving'));
+        filterCommunication.addEventListener('click', () => filterSkills('Communication & Collaboration'));
+        filterCharacter.addEventListener('click', () => filterSkills('Character & Emotional Strength'));
+        filterAll.addEventListener('click', () => filterSkills('all'));
+
+        function filterSkills(pillar) {
+            skillItems.forEach(item => {
+                const skillId = item.id;
+                const skillInfo = skillData[skillId];
+                
+                if (pillar === 'all' || skillInfo.pillar === pillar) {
+                    item.closest('li').style.display = '';
+                } else {
+                    item.closest('li').style.display = 'none';
+                }
+            });
+            
+            // Update filter button styles
+            [filterThinking, filterCommunication, filterCharacter, filterAll].forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-offset-2');
+            });
+            
+            if (pillar === 'Thinking & Problem Solving') {
+                filterThinking.classList.add('ring-2', 'ring-blue-500', 'ring-offset-2');
+            } else if (pillar === 'Communication & Collaboration') {
+                filterCommunication.classList.add('ring-2', 'ring-green-500', 'ring-offset-2');
+            } else if (pillar === 'Character & Emotional Strength') {
+                filterCharacter.classList.add('ring-2', 'ring-red-500', 'ring-offset-2');
+            } else {
+                filterAll.classList.add('ring-2', 'ring-gray-500', 'ring-offset-2');
+            }
+        }
+
+        // Print functionality
+        printButton.addEventListener('click', () => {
+            window.print();
+        });
+
+        // Helper function to check if element is in viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Initialize with all filter selected
+        filterAll.classList.add('ring-2', 'ring-gray-500', 'ring-offset-2');
+        
+        // Show interaction description on load
+        setTimeout(() => {
+            interactionDescriptionDiv.classList.add('visible');
+        }, 500);
+
+        // Make details area visible initially with welcome message
+        setTimeout(() => {
+            skillDetailsDiv.classList.add('visible');
+        }, 800);
+        
+        // ====== New Feature: About Section Toggle ======
+        const showAboutBtn = document.getElementById('show-about');
+        const closeAboutBtn = document.getElementById('close-about');
+        const aboutSection = document.getElementById('about-section');
+        
+        showAboutBtn.addEventListener('click', () => {
+            aboutSection.classList.remove('hidden');
+            assessmentSection.classList.add('hidden');
+            resourcesSection.classList.add('hidden');
+        });
+        
+        closeAboutBtn.addEventListener('click', () => {
+            aboutSection.classList.add('hidden');
+        });
+        
+        // ====== New Feature: Assessment Section Toggle ======
+        const showAssessmentBtn = document.getElementById('show-assessment');
+        const closeAssessmentBtn = document.getElementById('close-assessment');
+        const assessmentSection = document.getElementById('assessment-section');
+        const calculateAssessmentBtn = document.getElementById('calculate-assessment');
+        const assessmentResults = document.getElementById('assessment-results');
+        
+        showAssessmentBtn.addEventListener('click', () => {
+            assessmentSection.classList.remove('hidden');
+            aboutSection.classList.add('hidden');
+            resourcesSection.classList.add('hidden');
+        });
+        
+        closeAssessmentBtn.addEventListener('click', () => {
+            assessmentSection.classList.add('hidden');
+        });
+        
+        calculateAssessmentBtn.addEventListener('click', () => {
+            assessmentResults.classList.remove('hidden');
+            // In a real implementation, this would calculate based on actual ratings
+        });
+        
+        // Rating buttons functionality
+        const ratingBtns = document.querySelectorAll('.rating-btn');
+        ratingBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Clear all selected buttons in this group
+                const siblings = this.parentElement.querySelectorAll('.rating-btn');
+                siblings.forEach(sib => {
+                    sib.classList.remove('bg-purple-500', 'text-white');
+                    sib.classList.add('hover:bg-blue-200');
+                });
+                
+                // Select this button
+                this.classList.add('bg-purple-500', 'text-white');
+                this.classList.remove('hover:bg-blue-200');
+            });
+        });
+        
+        // ====== New Feature: Resources Section Toggle ======
+        const showResourcesBtn = document.getElementById('show-resources');
+        const closeResourcesBtn = document.getElementById('close-resources');
+        const resourcesSection = document.getElementById('resources-section');
+        
+        showResourcesBtn.addEventListener('click', () => {
+            resourcesSection.classList.remove('hidden');
+            aboutSection.classList.add('hidden');
+            assessmentSection.classList.add('hidden');
+        });
+        
+        closeResourcesBtn.addEventListener('click', () => {
+            resourcesSection.classList.add('hidden');
+        });
+        
+        // ====== New Feature: Real-World Examples Toggle ======
+        const toggleExamplesBtn = document.getElementById('toggle-examples');
+        const examplesChevron = document.getElementById('examples-chevron');
+        const examplesContent = document.getElementById('examples-content');
+        const exampleTitle = document.getElementById('example-title');
+        const workplaceExample = document.getElementById('workplace-example');
+        const leadershipExample = document.getElementById('leadership-example');
+        const personalExample = document.getElementById('personal-example');
+        
+        toggleExamplesBtn.addEventListener('click', () => {
+            examplesContent.classList.toggle('hidden');
+            examplesChevron.classList.toggle('rotate-90');
+        });
+        
+        // Update examples when a skill is clicked
+        function updateExamples(skillId) {
+            const examples = skillExamples[skillId] || defaultExamples;
+            const skillName = skillData[skillId].name;
+            
+            exampleTitle.textContent = `How ${skillName} Is Applied`;
+            workplaceExample.textContent = examples.workplace;
+            leadershipExample.textContent = examples.leadership;
+            personalExample.textContent = examples.personal;
+        }
+        
+        // Add to original handleClick function
+        const originalHandleClick = handleClick;
+        handleClick = function(event) {
+            const clickedSkillId = event.target.closest('.skill-item').id;
+            originalHandleClick(event);
+            
+            // Update examples for the clicked skill
+            if (skillData[clickedSkillId]) {
+                updateExamples(clickedSkillId);
+            }
+        };
+        
+        // ====== New Feature: Development Plan Toggle ======
+        const toggleDevelopmentPlanBtn = document.getElementById('toggle-development-plan');
+        const planChevron = document.getElementById('plan-chevron');
+        const developmentPlanContent = document.getElementById('development-plan-content');
+        
+        toggleDevelopmentPlanBtn.addEventListener('click', () => {
+            developmentPlanContent.classList.toggle('hidden');
+            planChevron.classList.toggle('rotate-180');
+        });
+        
+        // Add to plan functionality
+        const addToPlanBtn = document.getElementById('add-to-plan');
+        const selectedSkillsDiv = document.getElementById('selected-skills');
+        const developmentActionsDiv = document.getElementById('development-actions');
+        
+        // Set current date as default for date inputs
+        const today = new Date();
+        const startDateInput = document.getElementById('start-date');
+        const endDateInput = document.getElementById('end-date');
+        
+        // Format date as YYYY-MM-DD for input value
+        const formatDate = date => {
+            const yyyy = date.getFullYear();
+            const mm = String(date.getMonth() + 1).padStart(2, '0');
+            const dd = String(date.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        };
+        
+        startDateInput.value = formatDate(today);
+        
+        // Set end date to 3 months from now by default
+        const threeMonthsLater = new Date();
+        threeMonthsLater.setMonth(threeMonthsLater.getMonth() + 3);
+        endDateInput.value = formatDate(threeMonthsLater);
+        
+        // Track selected skills
+        const selectedSkills = new Set();
+        
+        addToPlanBtn.addEventListener('click', () => {
+            // Find which skill is currently active
+            const activeSkill = document.querySelector('.skill-item.active');
+            if (!activeSkill) return;
+            
+            const skillId = activeSkill.id;
+            const skillInfo = skillData[skillId];
+            
+            if (skillInfo && !selectedSkills.has(skillId)) {
+                selectedSkills.add(skillId);
+                
+                // Clear placeholder text if it's the first skill
+                if (selectedSkills.size === 1) {
+                    selectedSkillsDiv.innerHTML = '';
+                }
+                
+                // Add skill to selected skills list
+                const skillElement = document.createElement('div');
+                skillElement.className = `flex justify-between items-center p-2 mb-2 bg-${skillInfo.color}-50 rounded border border-${skillInfo.color}-200`;
+                skillElement.innerHTML = `
+                    <span class="flex items-center">
+                        <i class="fas ${skillInfo.icon} text-${skillInfo.color}-500 mr-2"></i>
+                        ${skillInfo.name}
+                    </span>
+                    <button class="remove-skill text-gray-500 hover:text-red-500" data-skill-id="${skillId}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                selectedSkillsDiv.appendChild(skillElement);
+                
+                // Add development actions
+                const actionElement = document.createElement('div');
+                actionElement.className = `development-action-${skillId} bg-gray-50 p-3 rounded border-l-4 border-${skillInfo.color}-500`;
+                actionElement.innerHTML = `
+                    <h5 class="font-semibold mb-2">${skillInfo.name}</h5>
+                    <p class="text-sm mb-2"><strong>Learn:</strong> ${skillInfo.development.learn}</p>
+                    <p class="text-sm mb-2"><strong>Build:</strong> ${skillInfo.development.build}</p>
+                    <p class="text-sm"><strong>Train:</strong> ${skillInfo.development.train}</p>
+                `;
+                developmentActionsDiv.appendChild(actionElement);
+                
+                // Add event listener for remove button
+                skillElement.querySelector('.remove-skill').addEventListener('click', function() {
+                    const skillId = this.dataset.skillId;
+                    selectedSkills.delete(skillId);
+                    this.closest('div').remove();
+                    
+                    // Remove corresponding development action
+                    const actionElement = document.querySelector(`.development-action-${skillId}`);
+                    if (actionElement) actionElement.remove();
+                    
+                    // Restore placeholder if no skills left
+                    if (selectedSkills.size === 0) {
+                        selectedSkillsDiv.innerHTML = 'Click on skills above and press "Add to Plan" to include them here.';
+                        developmentActionsDiv.innerHTML = `
+                            <div class="bg-gray-50 p-3 rounded">
+                                <p class="text-gray-500 italic">Your personalized development actions will appear here based on the skills you select.</p>
+                            </div>
+                        `;
+                    }
+                });
+            }
+        });
+        
+        // Generate development plan
+        const generatePlanBtn = document.getElementById('generate-plan');
+        generatePlanBtn.addEventListener('click', () => {
+            if (selectedSkills.size === 0) {
+                alert('Please select at least one skill to include in your development plan.');
+                return;
+            }
+            
+            // In a real implementation, this would generate a PDF or other downloadable format
+            alert('Your development plan would be generated here. In a complete implementation, this would create a downloadable PDF with your customized plan.');
+        });
+        
+        // ====== Additional Technical Features ======
+        
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const moonIcon = darkModeToggle.querySelector('i');
+        let darkMode = false;
+        
+        darkModeToggle.addEventListener('click', () => {
+            darkMode = !darkMode;
+            
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                document.body.style.backgroundColor = '#1a202c';
+                document.body.style.color = '#e2e8f0';
+                moonIcon.classList.remove('fa-moon');
+                moonIcon.classList.add('fa-sun');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.style.backgroundColor = '#f8fafc';
+                document.body.style.color = '#1e293b';
+                moonIcon.classList.remove('fa-sun');
+                moonIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Back to top
+        const backToTopBtn = document.getElementById('back-to-top');
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.opacity = '1';
+            } else {
+                backToTopBtn.style.opacity = '0.5';
+            }
+            
+            // Update scroll position indicator
+            const scrollPosition = document.getElementById('scroll-position');
+            const currentPillar = document.getElementById('current-pillar');
+            
+            // Determine which section is most visible in the viewport
+            const thinkingSection = document.querySelector('.pillar-thinking');
+            const communicationSection = document.querySelector('.pillar-communication');
+            const characterSection = document.querySelector('.pillar-character');
+            
+            const thinkingRect = thinkingSection.getBoundingClientRect();
+            const communicationRect = communicationSection.getBoundingClientRect();
+            const characterRect = characterSection.getBoundingClientRect();
+            
+            // Check which section is most visible
+            if (thinkingRect.top < window.innerHeight && thinkingRect.bottom > 0) {
+                currentPillar.textContent = 'Thinking & Problem Solving';
+                currentPillar.className = 'font-semibold text-blue-600';
+            } else if (communicationRect.top < window.innerHeight && communicationRect.bottom > 0) {
+                currentPillar.textContent = 'Communication & Collaboration';
+                currentPillar.className = 'font-semibold text-green-600';
+            } else if (characterRect.top < window.innerHeight && characterRect.bottom > 0) {
+                currentPillar.textContent = 'Character & Emotional Strength';
+                currentPillar.className = 'font-semibold text-red-600';
+            } else {
+                currentPillar.textContent = 'All Pillars';
+                currentPillar.className = 'font-semibold text-gray-600';
+            }
+        });
+        
+        // Cookie consent
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptCookiesBtn = document.getElementById('accept-cookies');
+        
+        // Check if user has already accepted cookies
+        if (localStorage.getItem('cookiesAccepted') !== 'true') {
+            cookieBanner.style.display = 'flex';
+        } else {
+            cookieBanner.style.display = 'none';
+        }
+        
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.style.display = 'none';
+        });
+        
+        // Style tooltips
+        document.head.insertAdjacentHTML('beforeend', `
+            <style>
+                .tooltip {
+                    position: relative;
+                }
+                
+                .tooltip-text {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: #333;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    position: absolute;
+                    z-index: 1;
+                    right: 130%;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                    font-size: 14px;
+                    font-weight: normal;
+                }
+                
+                .tooltip:hover .tooltip-text {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                
+                @media print {
+                    .no-print {
+                        display: none !important;
+                    }
+                    
+                    .print-only {
+                        display: block !important;
+                    }
+                }
+                
+                @media (max-width: 768px) {
+                    .tooltip-text {
+                        display: none;
+                    }
+                }
+            </style>
+        `);
+        
+        // Add a loading indicator (simulated for demonstration)
+        window.addEventListener('load', () => {
+            // Create loading overlay
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'fixed inset-0 bg-white flex items-center justify-center z-50';
+            loadingOverlay.innerHTML = `
+                <div class="text-center">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                    <p class="text-xl text-gray-700">Loading Structural Skills Framework...</p>
+                </div>
+            `;
+            document.body.appendChild(loadingOverlay);
+            
+            // Remove loading overlay after 1 second (simulating load time)
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => {
+                    loadingOverlay.remove();
+                }, 500);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
