@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structural Skills for the AI Era - Interactive Guide</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Structural Skills for the AI Era - Interactive Guide">
+    <meta name="description" content="Explore and develop essential human skills organized into three foundational pillars to thrive in an increasingly AI-driven world.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Structural Skills for the AI Era">
+    <meta property="og:description" content="Interactive guide to essential human skills for thriving alongside AI.">
+    <meta property="og:image" content="https://source.unsplash.com/random/1200x630/?skills">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Structural Skills for the AI Era">
+    <meta property="twitter:description" content="Interactive guide to essential human skills for thriving alongside AI.">
+    <meta property="twitter:image" content="https://source.unsplash.com/random/1200x630/?skills">
+    
+    <!-- Stylesheets -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32x32">
+    <style>
+        :root {
+            --color-thinking: #3b82f6;
+            --color-communication: #22c55e;
+            --color-character: #ef4444;
+            --gradient-thinking: linear-gradient(135deg, #3b82f6, #1e40af);
+            --gradient-communication: linear-gradient(135deg, #22c55e, #16a34a);
+            --gradient-character: linear-gradient(135deg, #ef4444, #b91c1c);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            scroll-behavior: smooth;
+        }
+        
+        .skill-item {
+            background-color: #ffffff;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pillar-thinking .skill-item { border-left-color: var(--color-thinking); }
+        .pillar-communication .skill-item { border-left-color: var(--color-communication); }
+        .pillar-character .skill-item { border-left-color: var(--color-character); }
+        
+        .pillar-thinking h2 { background: var(--gradient-thinking); }
+        .pillar-communication h2 { background: var(--gradient-communication); }
+        .pillar-character h2 { background: var(--gradient-character); }
+        
+        /* Custom highlight effects */
+        .skill-item.highlight {
+            background-color: #fff7ed;
+            box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .skill-item.active {
+            background-color: #eef2ff;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .skill-item::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .skill-item:hover::after {
+            width: 100%;
+        }
+        
+        /* Animation for descriptions */
+        #interaction-description, #skill-details {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        #interaction-description.visible, #skill-details.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Skill icon indicators */
+        .skill-item i {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .skill-item:hover i {
+            opacity: 1;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        
+        /* Progress visualization */
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            margin-top: 8px;
+        }
+        
+        .progress-step {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.8s ease-in-out;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .pill {
+                display: none;
+            }
+            
+            .skill-item {
+                padding: 12px 16px;
+            }
+            
+            #header-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-6">
+    <header class="container mx-auto mb-8">
+        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+            <h1 id="header-title" class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">The Structural Pillars: Skills for the AI Era</h1>
+            <p class="text-gray-600 max-w-3xl mx-auto mb-6">A comprehensive framework of essential human skills organized into three foundational pillars to thrive in an increasingly AI-driven world.</p>
+            
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <button id="show-about" class="flex items-center justify-center px-4 py-2 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 rounded-lg transition">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    About This Framework
+                </button>
+                <button id="show-assessment" class="flex items-center justify-center px-4 py-2 bg-purple-100 hover:bg-purple-200 text-purple-700 rounded-lg transition">
+                    <i class="fas fa-clipboard-check mr-2"></i>
+                    Self-Assessment
+                </button>
+                <button id="show-resources" class="flex items-center justify-center px-4 py-2 bg-teal-100 hover:bg-teal-200 text-teal-700 rounded-lg transition">
+                    <i class="fas fa-book mr-2"></i>
+                    Learning Resources
+                </button>
+            </div>
+        </div>
+        
+        <!-- About section (initially hidden) -->
+        <div id="about-section" class="mt-4 bg-white rounded-lg shadow-md p-6 hidden">
+            <div class="flex justify-between items-start mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">About the Structural Skills Framework</h2>
+                <button id="close-about" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="prose max-w-none">
+                <p class="mb-4">As artificial intelligence transforms our world, certain distinctly human capabilities become increasingly valuable. The Structural Skills Framework identifies and organizes these essential skills that will help individuals thrive alongside AI technologies.</p>
+                
+                <h3 class="text-xl font-semibold mt-5 mb-3 flex items-center">
+                    <i class="fas fa-brain text-blue-500 mr-2"></i>
+                    Thinking & Problem Solving
+                </h3>
+                <p class="mb-4">The first pillar focuses on cognitive abilities that allow humans to navigate complexity, make sound judgments, and innovate in ways AI cannot replicate. These skills include critical thinking, creativity, adaptability, and more.</p>
+                
+                <h3 class="text-xl font-semibold mt-5 mb-3 flex items-center">
+                    <i class="fas fa-comments text-green-500 mr-2"></i>
+                    Communication & Collaboration
+                </h3>
+                <p class="mb-4">The second pillar encompasses skills needed to effectively interact with others, build relationships, and work together. As AI handles more routine tasks, human connection and collaboration become even more valuable.</p>
+                
+                <h3 class="text-xl font-semibold mt-5 mb-3 flex items-center">
+                    <i class="fas fa-shield-alt text-red-500 mr-2"></i>
+                    Character & Emotional Strength
+                </h3>
+                <p class="mb-4">The third pillar addresses the personal qualities and emotional resilience that underpin effective interaction and sustained effort. These character traits distinguish human contributions from AI capabilities.</p>
+                
+                <p class="mt-6 text-gray-700 italic">Use this interactive guide to explore each skill, understand its importance, and discover practical ways to develop it throughout your personal and professional journey.</p>
+            </div>
+        </div>
+        
+        <!-- Assessment section (initially hidden) -->
+        <div id="assessment-section" class="mt-4 bg-white rounded-lg shadow-md p-6 hidden">
+            <div class="flex justify-between items-start mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Self-Assessment Tool</h2>
+                <button id="close-assessment" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <p class="mb-6">Rate your current proficiency in each skill area to identify strengths and opportunities for growth.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-blue-700 mb-3">Thinking & Problem Solving</h3>
+                    <div class="space-y-3">
+                        <div class="skill-rating flex items-center">
+                            <span class="w-1/3">Curiosity</span>
+                            <div class="w-2/3 flex gap-2">
+                                <button class="rating-btn w-8 h-8 rounded-full border border-blue-300 hover:bg-blue-200" data-value="1">1</button>
+                                <button class="rating-btn w-8 h-8 rounded-full border border-blue-300 hover:bg-blue-200" data-value="2">2</button>
+                                <button class="rating-btn w-8 h-8 rounded-full border border-blue-300 hover:bg-blue-200" data-value="3">3</button>
+                                <button class="rating-btn w-8 h-8 rounded-full border border-blue-300 hover:bg-blue-200" data-value="4">4</button>
+                                <button class="rating-btn w-8 h-8 rounded-full border border-blue-300 hover:bg-blue-200" data-value="5">5</button>
+                            </div>
+                        </div>
+                        <!-- Add more skills from this pillar with the same pattern -->
+                    </div>
+                </div>
+                
+                <!-- Similar sections for other pillars -->
+            </div>
+            
+            <div class="mt-6 text-center">
+                <button id="calculate-assessment" class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                    Calculate Results
+                </button>
+            </div>
+            
+            <div id="assessment-results" class="mt-6 hidden">
+                <h3 class="font-bold text-lg mb-2">Your Skills Profile</h3>
+                <p class="mb-4">This is a placeholder for personalized assessment results. In a full implementation, this would show analysis of your ratings with recommendations.</p>
+            </div>
+        </div>
+        
+        <!-- Resources section (initially hidden) -->
+        <div id="resources-section" class="mt-4 bg-white rounded-lg shadow-md p-6 hidden">
+            <div class="flex justify-between items-start mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">Learning Resources</h2>
+                <button id="close-resources" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <p class="mb-6">Explore these carefully selected resources to deepen your understanding and accelerate your development of structural skills.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="border rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-blue-100 p-3">
+                        <h3 class="font-bold text-blue-800">Thinking & Problem Solving</h3>
+                    </div>
+                    <div class="p-4">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-book-open mt-1 mr-2 text-blue-500"></i>
+                                <span>"Thinking, Fast and Slow" by Daniel Kahneman</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-video mt-1 mr-2 text-blue-500"></i>
+                                <span>MasterClass: Neil deGrasse Tyson on Critical Thinking</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-graduation-cap mt-1 mr-2 text-blue-500"></i>
+                                <span>Coursera: Learning How to Learn</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-green-100 p-3">
+                        <h3 class="font-bold text-green-800">Communication & Collaboration</h3>
+                    </div>
+                    <div class="p-4">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-book-open mt-1 mr-2 text-green-500"></i>
+                                <span>"Crucial Conversations" by Kerry Patterson</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-video mt-1 mr-2 text-green-500"></i>
+                                <span>TED Masterclass: Public Speaking</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-graduation-cap mt-1 mr-2 text-green-500"></i>
+                                <span>LinkedIn Learning: Working in Teams</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-red-100 p-3">
+                        <h3 class="font-bold text-red-800">Character & Emotional Strength</h3>
+                    </div>
+                    <div class="p-4">
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-book-open mt-1 mr-2 text-red-500"></i>
+                                <span>"Emotional Intelligence 2.0" by Travis Bradberry</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-video mt-1 mr-2 text-red-500"></i>
+                                <span>MasterClass: Robin Roberts on Authenticity</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-graduation-cap mt-1 mr-2 text-red-500"></i>
+                                <span>edX: Science of Happiness (Berkeley)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                <h3 class="font-bold text-yellow-800 mb-2">Downloadable Resources</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="#" class="flex items-center p-3 bg-white rounded border hover:bg-gray-50">
+                        <i class="fas fa-file-pdf text-red-500 mr-3 text-xl"></i>
+                        <span>Structural Skills Cheat Sheet</span>
+                    </a>
+                    <a href="#" class="flex items-center p-3 bg-white rounded border hover:bg-gray-50">
+                        <i class="fas fa-file-pdf text-red-500 mr-3 text-xl"></i>
+                        <span>Development Planning Workbook</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto">
+        <div id="interaction-description" class="text-center text-gray-700 text-lg mb-8 p-5 bg-white rounded-lg shadow-md transition-all">
+            <i class="fas fa-info-circle mr-2 text-blue-500"></i>
+            <span>Hover over a skill to see its connections. Click a skill for detailed development steps.</span>
+        </div>
+
+        <div class="flex flex-wrap -mx-4">
+            <!-- Thinking & Problem Solving Pillar -->
+            <div class="w-full md:w-1/3 px-4 mb-8 pillar-thinking">
+                <div class="rounded-t-lg">
+                    <h2 class="text-2xl font-semibold py-5 px-4 rounded-t-lg text-white text-center flex items-center justify-center">
+                        <i class="fas fa-brain mr-2"></i>
+                        Thinking & Problem Solving
+                    </h2>
+                </div>
+                <div class="bg-white p-6 rounded-b-lg shadow-lg">
+                    <ul class="space-y-3">
+                        <li id="skill-curiosity" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Curiosity</span>
+                            <i class="fas fa-lightbulb text-blue-500"></i>
+                        </li>
+                        <li id="skill-leadership" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Leadership</span>
+                            <i class="fas fa-compass text-blue-500"></i>
+                        </li>
+                        <li id="skill-critical-thinking" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Critical Thinking</span>
+                            <i class="fas fa-balance-scale text-blue-500"></i>
+                        </li>
+                        <li id="skill-creativity" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Creativity</span>
+                            <i class="fas fa-palette text-blue-500"></i>
+                        </li>
+                        <li id="skill-problem-solving" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Problem Solving</span>
+                            <i class="fas fa-puzzle-piece text-blue-500"></i>
+                        </li>
+                        <li id="skill-decision-making" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Decision-making</span>
+                            <i class="fas fa-code-branch text-blue-500"></i>
+                        </li>
+                        <li id="skill-flexibility" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Flexibility</span>
+                            <i class="fas fa-water text-blue-500"></i>
+                        </li>
+                        <li id="skill-adaptability" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Adaptability</span>
+                            <i class="fas fa-sync-alt text-blue-500"></i>
+                        </li>
+                        <li id="skill-discernment" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Discernment</span>
+                            <i class="fas fa-filter text-blue-500"></i>
+                        </li>
+                        <li id="skill-vision-wisdom" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Vision and Wisdom</span>
+                            <i class="fas fa-eye text-blue-500"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Communication & Collaboration Pillar -->
+            <div class="w-full md:w-1/3 px-4 mb-8 pillar-communication">
+                <div class="rounded-t-lg">
+                    <h2 class="text-2xl font-semibold py-5 px-4 rounded-t-lg text-white text-center flex items-center justify-center">
+                        <i class="fas fa-comments mr-2"></i>
+                        Communication & Collaboration
+                    </h2>
+                </div>
+                <div class="bg-white p-6 rounded-b-lg shadow-lg">
+                    <ul class="space-y-3">
+                        <li id="skill-storytelling" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Storytelling</span>
+                            <i class="fas fa-book-open text-green-500"></i>
+                        </li>
+                        <li id="skill-public-speaking" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Public Speaking</span>
+                            <i class="fas fa-microphone text-green-500"></i>
+                        </li>
+                        <li id="skill-active-listening" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Active Listening</span>
+                            <i class="fas fa-headphones text-green-500"></i>
+                        </li>
+                        <li id="skill-teamwork" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Teamwork</span>
+                            <i class="fas fa-users text-green-500"></i>
+                        </li>
+                        <li id="skill-negotiation" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Negotiation</span>
+                            <i class="fas fa-handshake text-green-500"></i>
+                        </li>
+                        <li id="skill-conflict-resolution" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Conflict Resolution</span>
+                            <i class="fas fa-gavel text-green-500"></i>
+                        </li>
+                        <li id="skill-interpersonal-communication" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Interpersonal Communication</span>
+                            <i class="fas fa-exchange-alt text-green-500"></i>
+                        </li>
+                        <li id="skill-cooperation" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Cooperation</span>
+                            <i class="fas fa-hands-helping text-green-500"></i>
+                        </li>
+                        <li id="skill-persuasion" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Persuasion</span>
+                            <i class="fas fa-bullhorn text-green-500"></i>
+                        </li>
+                        <li id="skill-relationship-trust" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Relationship & Trust Building</span>
+                            <i class="fas fa-heart text-green-500"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Character & Emotional Strength Pillar -->
+            <div class="w-full md:w-1/3 px-4 mb-8 pillar-character">
+                <div class="rounded-t-lg">
+                    <h2 class="text-2xl font-semibold py-5 px-4 rounded-t-lg text-white text-center flex items-center justify-center">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        Character & Emotional Strength
+                    </h2>
+                </div>
+                <div class="bg-white p-6 rounded-b-lg shadow-lg">
+                    <ul class="space-y-3">
+                        <li id="skill-empathy" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Empathy</span>
+                            <i class="fas fa-hand-holding-heart text-red-500"></i>
+                        </li>
+                        <li id="skill-compassion" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Compassion</span>
+                            <i class="fas fa-dove text-red-500"></i>
+                        </li>
+                        <li id="skill-courage" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Courage</span>
+                            <i class="fas fa-fire text-red-500"></i>
+                        </li>
+                        <li id="skill-work-ethic" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Work Ethic</span>
+                            <i class="fas fa-briefcase text-red-500"></i>
+                        </li>
+                        <li id="skill-humility" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Humility</span>
+                            <i class="fas fa-seedling text-red-500"></i>
+                        </li>
+                        <li id="skill-motivation" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Motivation</span>
+                            <i class="fas fa-tachometer-alt text-red-500"></i>
+                        </li>
+                        <li id="skill-dependability" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Dependability</span>
+                            <i class="fas fa-anchor text-red-500"></i>
+                        </li>
+                        <li id="skill-resilience" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Resilience</span>
+                            <i class="fas fa-mountain text-red-500"></i>
+                        </li>
+                        <li id="skill-persistence" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Persistence</span>
+                            <i class="fas fa-forward text-red-500"></i>
+                        </li>
+                        <li id="skill-integrity" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Integrity</span>
+                            <i class="fas fa-check-circle text-red-500"></i>
+                        </li>
+                        <li id="skill-trustworthiness" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Trustworthiness</span>
+                            <i class="fas fa-user-shield text-red-500"></i>
+                        </li>
+                        <li id="skill-justice-fairness" class="skill-item p-4 rounded flex justify-between items-center">
+                            <span>Justice and Fairness</span>
+                            <i class="fas fa-balance-scale-right text-red-500"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill Details Section -->
+        <div id="skill-details" class="mt-8 p-6 bg-white rounded-lg shadow-lg transition-all">
+            <div class="flex flex-wrap items-start">
+                <div class="w-full lg:w-3/4">
+                    <h3 id="skill-details-title" class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i id="skill-icon" class="fas fa-star mr-3 text-yellow-500"></i>
+                        <span>Select a skill to view details</span>
+                    </h3>
+                    <p id="skill-details-description" class="text-gray-700 mb-6 text-lg">Click on any skill from the pillars above to see its detailed description and development path.</p>
+                </div>
+                <div class="w-full lg:w-1/4 flex justify-end mb-4 lg:mb-0">
+                    <div class="pill bg-gray-100 px-4 py-2 rounded-full text-sm font-medium" id="skill-pillar">Select a skill</div>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <h4 class="text-xl font-semibold mb-4 text-gray-700">Development Path</h4>
+                <div id="development-paths" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Learn -->
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h5 class="font-bold text-blue-700 flex items-center mb-2">
+                            <i class="fas fa-book mr-2"></i> Learn
+                        </h5>
+                        <p id="skill-learn" class="text-gray-700"></p>
+                        <div class="progress-bar bg-blue-100">
+                            <div class="progress-step bg-blue-500" style="width: 25%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Build -->
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h5 class="font-bold text-green-700 flex items-center mb-2">
+                            <i class="fas fa-tools mr-2"></i> Build
+                        </h5>
+                        <p id="skill-build" class="text-gray-700"></p>
+                        <div class="progress-bar bg-green-100">
+                            <div class="progress-step bg-green-500" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Train -->
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <h5 class="font-bold text-yellow-700 flex items-center mb-2">
+                            <i class="fas fa-dumbbell mr-2"></i> Train
+                        </h5>
+                        <p id="skill-train" class="text-gray-700"></p>
+                        <div class="progress-bar bg-yellow-100">
+                            <div class="progress-step bg-yellow-500" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mastery -->
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <h5 class="font-bold text-purple-700 flex items-center mb-2">
+                            <i class="fas fa-crown mr-2"></i> Mastery
+                        </h5>
+                        <p id="skill-mastery" class="text-gray-700"></p>
+                        <div class="progress-bar bg-purple-100">
+                            <div class="progress-step bg-purple-500" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <h4 class="text-xl font-semibold mb-4 text-gray-700">Related Skills</h4>
+                <div id="related-skills" class="flex flex-wrap gap-2"></div>
+            </div>
+            
+            <!-- Real-world application examples -->
+            <div class="mt-8 border-t pt-6">
+                <button id="toggle-examples" class="flex items-center text-xl font-semibold mb-4 text-gray-700">
+                    <i class="fas fa-chevron-right mr-2 transition-transform" id="examples-chevron"></i>
+                    Real-World Applications
+                </button>
+                
+                <div id="examples-content" class="hidden">
+                    <div class="bg-gray-50 rounded-lg p-5">
+                        <h5 class="font-bold text-lg mb-3" id="example-title">How This Skill Is Applied</h5>
+                        <div id="example-workplace" class="mb-4">
+                            <h6 class="font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-briefcase text-gray-600 mr-2"></i>In the Workplace
+                            </h6>
+                            <p id="workplace-example" class="text-gray-700">Example will appear here when a skill is selected.</p>
+                        </div>
+                        
+                        <div id="example-leadership" class="mb-4">
+                            <h6 class="font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-users text-gray-600 mr-2"></i>For Leadership
+                            </h6>
+                            <p id="leadership-example" class="text-gray-700">Example will appear here when a skill is selected.</p>
+                        </div>
+                        
+                        <div id="example-personal">
+                            <h6 class="font-semibold text-gray-700 mb-2">
+                                <i class="fas fa-heart text-gray-600 mr-2"></i>Personal Development
+                            </h6>
+                            <p id="personal-example" class="text-gray-700">Example will appear here when a skill is selected.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Development Plan Tool -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+            <button id="toggle-development-plan" class="flex items-center justify-between w-full">
+                <span class="text-xl font-semibold text-gray-800 flex items-center">
+                    <i class="fas fa-tasks mr-3 text-indigo-500"></i>
+                    Personal Development Plan
+                </span>
+                <i class="fas fa-chevron-down text-gray-400 transition-transform" id="plan-chevron"></i>
+            </button>
+            
+            <div id="development-plan-content" class="hidden mt-4">
+                <p class="mb-4 text-gray-700">Create your personal skill development plan by selecting skills you want to improve and setting specific goals.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-3">Selected Skills</h4>
+                        <div id="selected-skills" class="min-h-32 border border-dashed rounded p-3 text-gray-500">
+                            Click on skills above and press "Add to Plan" to include them here.
+                        </div>
+                        
+                        <button id="add-to-plan" class="mt-3 px-4 py-2 bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200 transition">
+                            <i class="fas fa-plus mr-2"></i>Add Current Skill to Plan
+                        </button>
+                    </div>
+                    
+                    <div class="border rounded-lg p-4">
+                        <h4 class="font-semibold mb-3">Development Timeline</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">Starting Date</label>
+                                <input type="date" class="border rounded p-2 w-full" id="start-date">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">Target Completion</label>
+                                <input type="date" class="border rounded p-2 w-full" id="end-date">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-600 mb-1">Weekly Time Commitment</label>
+                                <select class="border rounded p-2 w-full" id="time-commitment">
+                                    <option value="1">1 hour per week</option>
+                                    <option value="2">2 hours per week</option>
+                                    <option value="3">3 hours per week</option>
+                                    <option value="5">5 hours per week</option>
+                                    <option value="10">10+ hours per week</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 border rounded-lg p-4">
+                    <h4 class="font-semibold mb-3">Development Actions</h4>
+                    <div id="development-actions" class="space-y-3">
+                        <div class="bg-gray-50 p-3 rounded">
+                            <p class="text-gray-500 italic">Your personalized development actions will appear here based on the skills you select.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex justify-end">
+                    <button id="generate-plan" class="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
+                        <i class="fas fa-file-download mr-2"></i>Generate My Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer with search and filters -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow-md">
+            <div class="flex flex-wrap items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <div class="relative">
+                        <input type="text" id="search-skills" placeholder="Search skills..." class="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-64">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button id="filter-thinking" class="flex items-center px-4 py-2 rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200 transition">
+                        <i class="fas fa-brain mr-2"></i>
+                        <span class="hidden sm:inline">Thinking</span>
+                    </button>
+                    <button id="filter-communication" class="flex items-center px-4 py-2 rounded-lg bg-green-100 text-green-700 hover:bg-green-200 transition">
+                        <i class="fas fa-comments mr-2"></i>
+                        <span class="hidden sm:inline">Communication</span>
+                    </button>
+                    <button id="filter-character" class="flex items-center px-4 py-2 rounded-lg bg-red-100 text-red-700 hover:bg-red-200 transition">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        <span class="hidden sm:inline">Character</span>
+                    </button>
+                    <button id="filter-all" class="flex items-center px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition">
+                        <i class="fas fa-th mr-2"></i>
+                        <span class="hidden sm:inline">All</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="fixed bottom-4 right-4 flex flex-col space-y-3">
+        <button id="print-btn" class="bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition tooltip" data-tooltip="Print this guide">
+            <i class="fas fa-print"></i>
+            <span class="tooltip-text">Print</span>
+        </button>
+        <button id="dark-mode-toggle" class="bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition tooltip" data-tooltip="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+            <span class="tooltip-text">Dark Mode</span>
+        </button>
+        <button id="back-to-top" class="bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition tooltip" data-tooltip="Back to top">
+            <i class="fas fa-arrow-up"></i>
+            <span class="tooltip-text">Back to Top</span>
+        </button>
+    </div>
+
+    <div class="fixed bottom-4 left-4 md:left-6">
+        <div class="bg-white p-3 rounded-lg shadow-lg border text-sm text-gray-600 flex items-center">
+            <i class="fas fa-info-circle mr-2 text-blue-500"></i>
+            <span id="scroll-position">Exploring: <span id="current-pillar">All Pillars</span></span>
+        </div>
+    </div>
+
+    <footer class="mt-12 text-center text-gray-500 pb-20 md:pb-8">
+        <p>© 2025 • The Structural Pillars: Skills for the AI Era</p>
+        <p class="text-sm mt-2">A framework for developing essential human capabilities in an AI-powered world.</p>
+        <div class="flex justify-center mt-4 space-x-4">
+            <a href="#" class="text-gray-400 hover:text-gray-600">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-600">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-gray-600">
+                <i class="far fa-envelope"></i>
+            </a>
+        </div>
+    </footer>
+    
+    <!-- Cookie consent banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 flex justify-between items-center z-50">
+        <p class="text-gray-700 mr-4">This website uses cookies to enhance your experience. By continuing to browse, you agree to our use of cookies.</p>
+        <button id="accept-cookies" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition whitespace-nowrap">
+            Accept Cookies
+        </button>
+    </div>
+
+    <script>
+        // Add skill application examples data
+        const skillExamples = {
+            'skill-curiosity': {
+                workplace: "A UX researcher who consistently asks 'why' questions during user interviews, uncovering deeper needs that competitors miss, resulting in more innovative product features.",
+                leadership: "A team leader who encourages staff to spend 10% of their time exploring new technologies, creating a culture where continuous learning drives innovation.",
+                personal: "Taking a different route home each week, trying new cuisines monthly, or subscribing to a magazine outside your usual interests to expand your worldview."
+            },
+            'skill-critical-thinking': {
+                workplace: "A data analyst who doesn't just accept patterns in reports but investigates anomalies and discovers that seeming drops in customer engagement were due to tracking errors, not actual disengagement.",
+                leadership: "A manager evaluating a proposal for a new product line who systematically examines assumptions, identifies potential risks, and suggests modifications, resulting in a more viable business plan.",
+                personal: "Before sharing news articles on social media, taking time to verify claims, review sources, and consider potential biases in the reporting."
+            },
+            'skill-creativity': {
+                workplace: "A marketing specialist combining unexpected elements in a campaign—merging sustainability messaging with gamification—resulting in 3x higher engagement than traditional approaches.",
+                leadership: "A director who arranges cross-functional brainstorming workshops where accounting, engineering, and sales collaborate, leading to innovative cost-saving measures.",
+                personal: "Creating unique gifts by combining skills (like writing a custom poem and setting it to music) rather than purchasing standard items."
+            },
+            'skill-active-listening': {
+                workplace: "A sales representative who notices a client's hesitation about pricing, asks probing questions, discovers their real concern is implementation timeline, and adjusts the proposal accordingly.",
+                leadership: "A team leader who notices an employee's enthusiasm dropping, creates space for a private conversation, and uncovers a personal challenge, allowing for appropriate accommodations.",
+                personal: "During disagreements with a partner, repeating back their position before responding, leading to quicker resolution and deeper understanding."
+            },
+            'skill-teamwork': {
+                workplace: "A software development team using pair programming and daily stand-ups to share knowledge, resulting in code with 40% fewer bugs than when working in isolation.",
+                leadership: "A project manager who creates clear role definitions, establishes communication protocols, and facilitates conflict resolution, enabling a diverse team to deliver ahead of schedule.",
+                personal: "In a community renovation project, contributing your specific skills while recognizing others' expertise, resulting in a successful outcome no individual could achieve alone."
+            },
+            'skill-empathy': {
+                workplace: "A customer service representative who recognizes a customer's frustration, acknowledges it genuinely, and offers solutions that address both practical needs and emotional concerns.",
+                leadership: "A manager who notices an employee struggling with new software, remembers their own learning challenges, and arranges for one-on-one training instead of expressing disappointment.",
+                personal: "Taking time to understand why a friend made a decision you disagree with, focusing on their perspective and feelings rather than immediately sharing your opinion."
+            },
+            'skill-resilience': {
+                workplace: "A startup founder facing a major investor pulling out, who allows themselves 24 hours to process the disappointment, then develops an alternative funding strategy that ultimately proves more beneficial.",
+                leadership: "A team leader during company restructuring who acknowledges uncertainty while maintaining focus on controllable elements, keeping team morale and productivity high amid change.",
+                personal: "After receiving rejection on a personal project, taking time to process emotions, extracting valuable feedback, and returning to the work with improvements rather than abandoning it."
+            }
+        };
+        
+        // Default examples for skills without specific ones
+        const defaultExamples = {
+            workplace: "This skill helps professionals identify opportunities, solve problems, and collaborate effectively in various workplace scenarios.",
+            leadership: "Leaders with this skill can better guide their teams, make sound decisions, and create environments where others can thrive.",
+            personal: "In daily life, this skill helps with relationships, personal growth, and finding fulfillment through ongoing development."
+        };
+        
+        // Data structure for skill information
+        const skillData = {
+            'skill-curiosity': {
+                name: 'Curiosity',
+                description: 'A strong desire to learn or know something; an inquisitive mindset that drives exploration and understanding.',
+                related: ['skill-critical-thinking', 'skill-creativity', 'skill-adaptability', 'skill-active-listening', 'skill-empathy'],
+                interactionDescription: 'Curiosity fuels Critical Thinking by prompting questions, drives Creativity by exploring new ideas, enables Adaptability by encouraging learning, enhances Active Listening by fostering interest, and builds Empathy by seeking to understand others.',
+                development: {
+                    learn: 'Read widely across different subjects, ask "why" and "how" questions frequently, follow your interests down rabbit holes.',
+                    build: 'Engage in new experiences, visit museums or new places, take online courses on diverse topics, subscribe to newsletters that challenge your perspectives.',
+                    train: 'Set aside dedicated time for undirected learning or exploration each week.',
+                    mastery: 'Continuously seek out novel information and experiences, connect seemingly unrelated ideas, become a lifelong learner.'
+                },
+                icon: 'fa-lightbulb',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-leadership': {
+                name: 'Leadership',
+                description: 'The ability to influence and guide individuals or teams towards a common goal; involves vision, motivation, and decision-making.',
+                related: ['skill-decision-making', 'skill-teamwork', 'skill-interpersonal-communication', 'skill-motivation', 'skill-integrity', 'skill-vision-wisdom'],
+                interactionDescription: 'Leadership requires effective Decision-making, the ability to foster Teamwork, strong Interpersonal Communication, the capacity to inspire Motivation, unwavering Integrity, and a clear Vision and Wisdom for the future.',
+                development: {
+                    learn: 'Study leadership theories and styles, read biographies of effective leaders, find a mentor.',
+                    build: 'Volunteer to lead projects, take on roles with responsibility, practice motivating and inspiring others.',
+                    train: 'Seek feedback on your leadership style, participate in leadership workshops, role-play challenging leadership scenarios.',
+                    mastery: 'Consistently inspire high performance, adapt your style to different situations and people, mentor future leaders.'
+                },
+                icon: 'fa-compass',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-critical-thinking': {
+                name: 'Critical Thinking',
+                description: 'The objective analysis and evaluation of an issue in order to form a judgment; involves questioning assumptions, evaluating evidence, and recognizing biases.',
+                related: ['skill-curiosity', 'skill-problem-solving', 'skill-decision-making', 'skill-discernment', 'skill-active-listening', 'skill-negotiation', 'skill-conflict-resolution', 'skill-justice-fairness'],
+                interactionDescription: 'Critical Thinking is essential for effective Problem Solving, informed Decision-making, sharp Discernment, evaluating information from Active Listening, strategizing in Negotiation, analyzing conflicts for Resolution, and upholding Justice and Fairness.',
+                development: {
+                    learn: 'Study logic and reasoning, learn about common cognitive biases, practice analyzing arguments in articles or debates.',
+                    build: 'Question information you encounter, seek out multiple perspectives on an issue, practice identifying flaws in reasoning.',
+                    train: 'Work through logic puzzles, participate in structured debates, analyze case studies that require careful evaluation.',
+                    mastery: 'Automatically question and evaluate information, make well-reasoned judgments even in complex situations, help others develop their critical thinking.'
+                },
+                icon: 'fa-balance-scale',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-creativity': {
+                name: 'Creativity',
+                description: 'The use of imagination or original ideas to create something; involves generating new concepts and finding novel solutions.',
+                related: ['skill-curiosity', 'skill-problem-solving', 'skill-adaptability', 'skill-storytelling', 'skill-vision-wisdom'],
+                interactionDescription: 'Creativity is sparked by Curiosity, helps generate novel solutions in Problem Solving, supports Adaptability by finding new ways, enhances Storytelling, and contributes to developing a compelling Vision and Wisdom.',
+                development: {
+                    learn: 'Study creative processes and techniques (like brainstorming, mind mapping), expose yourself to various forms of art and innovation.',
+                    build: 'Practice brainstorming regularly, work on creative projects (writing, art, music, coding), seek out diverse experiences to inspire new ideas.',
+                    train: 'Use creative prompts, participate in innovation challenges, collaborate with people from different fields.',
+                    mastery: 'Consistently generate original and valuable ideas, solve problems in innovative ways, foster creativity in others.'
+                },
+                icon: 'fa-palette',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-problem-solving': {
+                name: 'Problem Solving',
+                description: 'The process of finding solutions to difficult or complex issues; involves identifying the problem, analyzing causes, generating options, and implementing solutions.',
+                related: ['skill-critical-thinking', 'skill-creativity', 'skill-decision-making', 'skill-teamwork', 'skill-adaptability', 'skill-persistence'],
+                interactionDescription: 'Problem Solving relies on Critical Thinking and Creativity to find solutions, leads to Decision-making, often requires Teamwork, benefits from Adaptability when facing unexpected issues, and demands Persistence to see solutions through.',
+                development: {
+                    learn: 'Study problem-solving frameworks (like root cause analysis, design thinking), analyze how successful problems were solved historically.',
+                    build: 'Take on challenging tasks, break down complex problems into smaller parts, practice generating multiple solutions before selecting one.',
+                    train: 'Work through problem-solving exercises, participate in simulations, seek out opportunities to solve real-world problems.',
+                    mastery: 'Efficiently and effectively solve novel and complex problems, anticipate potential problems, develop new problem-solving approaches.'
+                },
+                icon: 'fa-puzzle-piece',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-decision-making': {
+                name: 'Decision-making',
+                description: 'The process of making choices by identifying a decision, gathering information, and assessing alternative resolutions.',
+                related: ['skill-critical-thinking', 'skill-problem-solving', 'skill-leadership', 'skill-discernment', 'skill-integrity', 'skill-justice-fairness', 'skill-vision-wisdom'],
+                interactionDescription: 'Decision-making is informed by Critical Thinking, is the outcome of Problem Solving, is a core function of Leadership, requires Discernment, must align with Integrity and Justice/Fairness, and is guided by Vision and Wisdom.',
+                development: {
+                    learn: 'Study decision-making models (like cost-benefit analysis, decision matrices), understand the role of risk and uncertainty.',
+                    build: 'Practice making decisions with incomplete information, analyze the outcomes of your past decisions, seek input from others.',
+                    train: 'Use decision-making simulations, analyze case studies focused on difficult choices, keep a journal of decisions and their results.',
+                    mastery: 'Consistently make timely and effective decisions, understand and mitigate biases in decision-making, make high-stakes decisions with confidence.'
+                },
+                icon: 'fa-code-branch',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-flexibility': {
+                name: 'Flexibility',
+                description: 'The ability to adapt to new, different, or changing requirements; being open to new ideas and approaches.',
+                related: ['skill-adaptability', 'skill-resilience', 'skill-cooperation', 'skill-teamwork'],
+                interactionDescription: 'Flexibility is closely linked to Adaptability, helps build Resilience when plans change, facilitates Cooperation, and is vital for effective Teamwork in dynamic situations.',
+                development: {
+                    learn: 'Read about change management, observe how flexible individuals handle unexpected situations.',
+                    build: 'Practice adjusting your plans when circumstances change, try new ways of doing things, be open to feedback and different perspectives.',
+                    train: 'Participate in activities that require quick adjustments (like improvisational theater or certain sports), intentionally step outside your comfort zone.',
+                    mastery: 'Easily adapt to significant changes, thrive in dynamic environments, help others navigate change.'
+                },
+                icon: 'fa-water',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-adaptability': {
+                name: 'Adaptability',
+                description: 'The capacity to adjust to new conditions; similar to flexibility but often implies a more significant or longer-term adjustment.',
+                related: ['skill-curiosity', 'skill-flexibility', 'skill-resilience', 'skill-creativity'],
+                interactionDescription: 'Adaptability is driven by Curiosity to learn new ways, requires Flexibility, builds Resilience in changing environments, and is fundamentally tied to the ability to learn quickly and the Creativity to find new approaches.',
+                development: {
+                    learn: 'Study how individuals and organizations successfully adapt to major shifts, understand the psychology of change.',
+                    build: 'Seek out roles or projects that involve significant change, practice continuous learning to stay current, reflect on past adaptations.',
+                    train: 'Engage in scenario planning, participate in training for new technologies or processes, seek feedback on your response to change.',
+                    mastery: 'Successfully navigate and even capitalize on significant disruptions, proactively prepare for future changes, become a catalyst for positive adaptation.'
+                },
+                icon: 'fa-sync-alt',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-discernment': {
+                name: 'Discernment',
+                description: 'The ability to judge well; having keen insight and understanding, particularly in distinguishing between what is true, right, or important.',
+                related: ['skill-critical-thinking', 'skill-decision-making', 'skill-active-listening', 'skill-empathy', 'skill-justice-fairness', 'skill-vision-wisdom'],
+                interactionDescription: 'Discernment relies on Critical Thinking and Active Listening to understand situations, is crucial for wise Decision-making, is enhanced by Empathy, is necessary for upholding Justice/Fairness, and contributes to Vision and Wisdom.',
+                development: {
+                    learn: 'Study critical thinking and logic, learn about different ethical frameworks, read literature that explores complex human situations.',
+                    build: 'Practice evaluating information and situations carefully, seek out diverse perspectives, reflect on your judgments and their outcomes.',
+                    train: 'Analyze case studies requiring nuanced judgment, participate in discussions that challenge your perspectives, practice active listening to understand underlying meanings.',
+                    mastery: 'Consistently make wise and insightful judgments, see beyond the surface of issues, provide valuable perspective to others.'
+                },
+                icon: 'fa-filter',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-vision-wisdom': {
+                name: 'Vision and Wisdom',
+                description: 'Vision is the ability to think about or plan the future with imagination or intelligence; Wisdom is the quality of having experience, knowledge, and good judgment. Often combined as the ability to see the big picture and apply deep understanding to guide future direction.',
+                related: ['skill-leadership', 'skill-creativity', 'skill-decision-making', 'skill-discernment', 'skill-justice-fairness'],
+                interactionDescription: 'Vision and Wisdom guide Leadership and Decision-making, are fueled by Creativity and Discernment, involve strategic thinking, and should be grounded in Justice and Fairness.',
+                development: {
+                    learn: 'Study history and trends, read philosophical texts, seek out mentors with extensive experience, engage in strategic planning frameworks.',
+                    build: 'Practice thinking long-term, reflect on your experiences and extract lessons, seek diverse perspectives on future possibilities.',
+                    train: 'Participate in foresight exercises, engage in strategic discussions, mentor others and share your insights.',
+                    mastery: 'Consistently articulate a compelling future direction, make decisions based on deep understanding and long-term implications, become a trusted advisor.'
+                },
+                icon: 'fa-eye',
+                color: 'blue',
+                pillar: 'Thinking & Problem Solving'
+            },
+            'skill-storytelling': {
+                name: 'Storytelling',
+                description: 'The ability to craft and share narratives that engage, inform, or persuade an audience; involves structuring information in a compelling way.',
+                related: ['skill-public-speaking', 'skill-interpersonal-communication', 'skill-persuasion', 'skill-empathy', 'skill-creativity'],
+                interactionDescription: 'Storytelling enhances Public Speaking and Interpersonal Communication, is a powerful tool for Persuasion, connects through Empathy, and is a form of Creativity.',
+                development: {
+                    learn: 'Study narrative structures, analyze effective speeches and presentations, read compelling fiction and non-fiction.',
+                    build: 'Practice telling stories in informal settings, write short stories or articles, structure your presentations and emails with a narrative arc.',
+                    train: 'Take storytelling workshops, record yourself telling stories and seek feedback, participate in public speaking groups.',
+                    mastery: 'Consistently connect with audiences on an emotional level, use storytelling to achieve communication goals, teach others how to tell effective stories.'
+                },
+                icon: 'fa-book-open',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-public-speaking': {
+                name: 'Public Speaking',
+                description: 'The act or skill of speaking effectively in front of an audience; involves clear articulation, presence, and engaging delivery.',
+                related: ['skill-storytelling', 'skill-interpersonal-communication', 'skill-persuasion', 'skill-courage', 'skill-leadership'],
+                interactionDescription: 'Public Speaking is improved by Storytelling and strong Interpersonal Communication, is used for Persuasion, requires Courage, and is a key skill for Leadership.',
+                development: {
+                    learn: 'Study public speaking techniques, watch skilled speakers, learn about managing stage fright.',
+                    build: 'Practice speaking in front of small groups, volunteer to give presentations, join a public speaking club like Toastmasters.',
+                    train: 'Record your speeches and analyze them, get feedback from peers or coaches, practice in front of a mirror.',
+                    mastery: 'Speak confidently and engagingly to any audience, adapt your style to different contexts, inspire and influence through your words.'
+                },
+                icon: 'fa-microphone',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-active-listening': {
+                name: 'Active Listening',
+                description: 'The practice of fully concentrating on, understanding, responding to, and remembering what is being said; goes beyond just hearing words.',
+                related: ['skill-interpersonal-communication', 'skill-teamwork', 'skill-negotiation', 'skill-conflict-resolution', 'skill-empathy', 'skill-curiosity', 'skill-critical-thinking', 'skill-relationship-trust'],
+                interactionDescription: 'Active Listening is fundamental to Interpersonal Communication, Teamwork, Negotiation, and Conflict Resolution. It builds Empathy and Trust, is driven by Curiosity, and provides input for Critical Thinking.',
+                development: {
+                    learn: 'Study active listening techniques (like paraphrasing, summarizing, asking clarifying questions), understand non-verbal cues.',
+                    build: 'Intentionally focus on the speaker without distractions, practice paraphrasing what you hear, ask open-ended questions.',
+                    train: 'Role-play conversations where active listening is crucial, seek feedback on your listening skills, practice in challenging communication situations.',
+                    mastery: 'Consistently understand the speaker\'s message fully, build stronger relationships through effective listening, help others feel heard and understood.'
+                },
+                icon: 'fa-headphones',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-teamwork': {
+                name: 'Teamwork',
+                description: 'The collaborative effort of a group to achieve a common goal or to complete a task in the most effective and efficient way.',
+                related: ['skill-cooperation', 'skill-active-listening', 'skill-interpersonal-communication', 'skill-conflict-resolution', 'skill-leadership', 'skill-humility', 'skill-dependability', 'skill-relationship-trust', 'skill-problem-solving'],
+                interactionDescription: 'Teamwork requires Cooperation, Active Listening, and Interpersonal Communication. It benefits from Conflict Resolution, effective Leadership, Humility, and Dependability, and builds Relationship and Trust. It is essential for collaborative Problem Solving.',
+                development: {
+                    learn: 'Study principles of team dynamics, learn about different team roles and how they contribute.',
+                    build: 'Participate actively in team projects, offer support to teammates, contribute positively to group discussions.',
+                    train: 'Engage in team-building exercises, seek feedback on your contribution to teams, analyze successful and unsuccessful team collaborations.',
+                    mastery: 'Consistently contribute to high-performing teams, resolve team conflicts constructively, foster a collaborative team environment.'
+                },
+                icon: 'fa-users',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-negotiation': {
+                name: 'Negotiation',
+                description: 'Discussion aimed at reaching an agreement; involves understanding different interests, finding common ground, and reaching mutually acceptable outcomes.',
+                related: ['skill-active-listening', 'skill-interpersonal-communication', 'skill-persuasion', 'skill-conflict-resolution', 'skill-critical-thinking', 'skill-relationship-trust'],
+                interactionDescription: 'Negotiation relies on Active Listening, strong Interpersonal Communication, and Persuasion. It often involves Conflict Resolution, requires Critical Thinking to find solutions, and aims to build or maintain Relationship and Trust.',
+                development: {
+                    learn: 'Study negotiation strategies and tactics, learn about different negotiation styles, understand the importance of preparation.',
+                    build: 'Look for opportunities to negotiate in everyday situations, practice identifying interests (yours and others), prepare thoroughly for important negotiations.',
+                    train: 'Participate in negotiation simulations and role-playing, seek feedback on your negotiation approach, analyze past negotiations.',
+                    mastery: 'Consistently achieve favorable and sustainable agreements, navigate complex negotiations effectively, build long-term relationships through negotiation.'
+                },
+                icon: 'fa-handshake',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-conflict-resolution': {
+                name: 'Conflict Resolution',
+                description: 'The process of resolving disputes or disagreements; involves identifying the root cause of conflict, facilitating communication, and finding mutually acceptable solutions.',
+                related: ['skill-active-listening', 'skill-interpersonal-communication', 'skill-negotiation', 'skill-empathy', 'skill-critical-thinking', 'skill-relationship-trust'],
+                interactionDescription: 'Conflict Resolution requires Active Listening and Interpersonal Communication to understand perspectives, often involves Negotiation, is enhanced by Empathy, uses Critical Thinking to find solutions, and helps preserve Relationship and Trust.',
+                development: {
+                    learn: 'Study conflict resolution models, learn de-escalation techniques, understand the role of emotions in conflict.',
+                    build: 'Practice staying calm in disagreements, actively listen to understand the other perspective, focus on finding solutions rather than placing blame.',
+                    train: 'Participate in conflict resolution workshops, role-play conflict scenarios, mediate disagreements between others (when appropriate).',
+                    mastery: 'Consistently resolve conflicts constructively, turn conflict into opportunities for growth, help others navigate their disagreements.'
+                },
+                icon: 'fa-gavel',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-interpersonal-communication': {
+                name: 'Interpersonal Communication',
+                description: 'The process of exchanging information, ideas, and feelings between two or more people; involves verbal and non-verbal cues, empathy, and understanding.',
+                related: ['skill-active-listening', 'skill-storytelling', 'skill-public-speaking', 'skill-teamwork', 'skill-negotiation', 'skill-conflict-resolution', 'skill-empathy', 'skill-relationship-trust', 'skill-persuasion'],
+                interactionDescription: 'Interpersonal Communication is the foundation for Active Listening, Storytelling, Public Speaking, Teamwork, Negotiation, and Conflict Resolution. It builds Empathy and Relationship/Trust and is used for Persuasion.',
+                development: {
+                    learn: 'Study communication theories, learn about non-verbal communication, understand the impact of your communication style on others.',
+                    build: 'Practice clear and concise communication, pay attention to non-verbal cues, ask for feedback on how you communicate.',
+                    train: 'Participate in communication skills training, record conversations (with permission) to analyze your style, practice active listening.',
+                    mastery: 'Consistently communicate effectively in a variety of interpersonal contexts, build strong relationships through clear and empathetic communication, adapt your style to different individuals.'
+                },
+                icon: 'fa-exchange-alt',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-cooperation': {
+                name: 'Cooperation',
+                description: 'The process of working together to the same end; involves sharing resources, coordinating efforts, and supporting others.',
+                related: ['skill-teamwork', 'skill-interpersonal-communication', 'skill-flexibility', 'skill-relationship-trust'],
+                interactionDescription: 'Cooperation is essential for Teamwork, requires effective Interpersonal Communication, is enabled by Flexibility, and builds Relationship and Trust.',
+                development: {
+                    learn: 'Study principles of collaboration and teamwork, understand the benefits of cooperation.',
+                    build: 'Actively look for opportunities to collaborate, offer your help to others, share information and resources freely.',
+                    train: 'Participate in collaborative projects with clear shared goals, practice coordinating tasks with others, seek feedback on your cooperativeness.',
+                    mastery: 'Consistently contribute to successful collaborative efforts, foster a spirit of cooperation in groups, find synergistic ways to work with others.'
+                },
+                icon: 'fa-hands-helping',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-persuasion': {
+                name: 'Persuasion',
+                description: 'The action or fact of persuading someone or of being persuaded to do or believe something; involves influencing others through reasoning or argument.',
+                related: ['skill-storytelling', 'skill-public-speaking', 'skill-interpersonal-communication', 'skill-negotiation', 'skill-leadership', 'skill-integrity'],
+                interactionDescription: 'Persuasion is achieved through Storytelling, Public Speaking, and Interpersonal Communication. It is a key tool in Negotiation and Leadership, and is most effective when backed by Integrity.',
+                development: {
+                    learn: 'Study principles of rhetoric and influence, understand different persuasion techniques, learn about logical fallacies.',
+                    build: 'Practice presenting your ideas convincingly, anticipate counterarguments, tailor your message to your audience.',
+                    train: 'Participate in debate clubs, practice persuasive writing or speaking, seek feedback on your ability to influence others.',
+                    mastery: 'Consistently influence others ethically and effectively, build consensus, become a trusted voice.'
+                },
+                icon: 'fa-bullhorn',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-relationship-trust': {
+                name: 'Relationship and Trust Building',
+                description: 'The process of establishing and nurturing connections with others based on mutual respect, reliability, and open communication.',
+                related: ['skill-interpersonal-communication', 'skill-active-listening', 'skill-empathy', 'skill-dependability', 'skill-integrity', 'skill-trustworthiness', 'skill-teamwork', 'skill-negotiation', 'skill-conflict-resolution', 'skill-leadership'],
+                interactionDescription: 'Relationship and Trust Building are built through Interpersonal Communication, Active Listening, Empathy, Dependability, Integrity, and Trustworthiness. They are the foundation for effective Teamwork, Negotiation, Conflict Resolution, and Leadership.',
+                development: {
+                    learn: 'Study the psychology of trust, learn about effective networking strategies, understand the importance of empathy and consistency.',
+                    build: 'Make an effort to connect with people on a personal level, follow through on your commitments, communicate honestly and openly.',
+                    train: 'Practice active listening and showing genuine interest in others, seek feedback on how trustworthy you are perceived to be, participate in activities that require mutual reliance.',
+                    mastery: 'Consistently build strong and lasting relationships, become a trusted individual in your network, foster a culture of trust in groups.'
+                },
+                icon: 'fa-heart',
+                color: 'green',
+                pillar: 'Communication & Collaboration'
+            },
+            'skill-empathy': {
+                name: 'Empathy',
+                description: 'The ability to understand and share the feelings of another; involves putting yourself in someone else\'s shoes.',
+                related: ['skill-compassion', 'skill-active-listening', 'skill-interpersonal-communication', 'skill-relationship-trust', 'skill-conflict-resolution', 'skill-discernment', 'skill-justice-fairness', 'skill-curiosity'],
+                interactionDescription: 'Empathy is the foundation for Compassion, enhances Active Listening and Interpersonal Communication, builds Relationship and Trust, is vital for Conflict Resolution, sharpens Discernment, informs Justice and Fairness, and is linked to Curiosity about others.',
+                development: {
+                    learn: 'Read fiction to experience different perspectives, study emotional intelligence, learn about different cultural backgrounds.',
+                    build: 'Actively listen to others\' feelings, try to see situations from different viewpoints, ask people about their experiences.',
+                    train: 'Practice perspective-taking exercises, volunteer to work with diverse groups of people, seek feedback on your ability to understand others\' emotions.',
+                    mastery: 'Consistently understand and respond appropriately to the emotions of others, build deep connections through empathy, use empathy to inform your decisions and actions.'
+                },
+                icon: 'fa-hand-holding-heart',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-compassion': {
+                name: 'Compassion',
+                description: 'Sympathetic pity and concern for the sufferings or misfortunes of others; involves a desire to alleviate suffering.',
+                related: ['skill-empathy', 'skill-justice-fairness', 'skill-motivation', 'skill-leadership'],
+                interactionDescription: 'Compassion stems from Empathy, drives the pursuit of Justice and Fairness, can be a strong source of Motivation, and is a key trait for empathetic Leadership.',
+                development: {
+                    learn: 'Read stories about people facing adversity, study humanitarian efforts, understand the causes of suffering in the world.',
+                    build: 'Volunteer for causes that help others, practice acts of kindness, intentionally notice the struggles of those around you.',
+                    train: 'Engage in mindfulness and loving-kindness meditation, seek feedback on how compassionate you are perceived to be, participate in activities that require caring for others.',
+                    mastery: 'Consistently act with kindness and concern for others, be moved to action by suffering, inspire compassion in others.'
+                },
+                icon: 'fa-dove',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-courage': {
+                name: 'Courage',
+                description: 'The ability to do something that frightens one; bravery in the face of pain or grief; involves taking risks for a worthy purpose.',
+                related: ['skill-persistence', 'skill-resilience', 'skill-leadership', 'skill-integrity', 'skill-public-speaking'],
+                interactionDescription: 'Courage enables Persistence through difficulty, builds Resilience after setbacks, is essential for Leadership, is required to uphold Integrity, and is needed for effective Public Speaking.',
+                development: {
+                    learn: 'Read about acts of courage, understand the psychology of fear, identify your values and what you are willing to stand for.',
+                    build: 'Intentionally take small steps outside your comfort zone, speak up for what you believe in, face your fears in a safe environment.',
+                    train: 'Engage in activities that require bravery (like public speaking or confronting difficult conversations), seek feedback on your courage in challenging situations.',
+                    mastery: 'Consistently act in accordance with your values even when it is difficult or frightening, inspire courage in others, face significant challenges with bravery.'
+                },
+                icon: 'fa-fire',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-work-ethic': {
+                name: 'Work Ethic',
+                description: 'The principle that hard work is intrinsically virtuous or worthy of reward; involves diligence, reliability, and commitment to quality.',
+                related: ['skill-persistence', 'skill-dependability', 'skill-motivation', 'skill-integrity'],
+                interactionDescription: 'A strong Work Ethic is characterized by Persistence and Dependability, is fueled by Motivation, and is a reflection of Integrity.',
+                development: {
+                    learn: 'Study the habits of highly productive people, understand the value of discipline and perseverance.',
+                    build: 'Set clear goals and work consistently towards them, minimize distractions, take pride in the quality of your work.',
+                    train: 'Use time management techniques, track your progress on tasks, seek feedback on your reliability and diligence.',
+                    mastery: 'Consistently produce high-quality work, be a reliable and dedicated team member, inspire a strong work ethic in others.'
+                },
+                icon: 'fa-briefcase',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-humility': {
+                name: 'Humility',
+                description: 'A modest or low view of one\'s own importance; freedom from pride or arrogance; involves recognizing your limitations and valuing others\' contributions.',
+                related: ['skill-teamwork', 'skill-active-listening', 'skill-adaptability', 'skill-relationship-trust'],
+                interactionDescription: 'Humility facilitates Teamwork and Active Listening by valuing others\' input, supports Adaptability by acknowledging limitations, and builds Relationship and Trust.',
+                development: {
+                    learn: 'Read philosophical texts on humility, observe humble individuals, understand that there is always more to learn.',
+                    build: 'Acknowledge your mistakes, give credit to others generously, seek feedback and be open to criticism.',
+                    train: 'Practice active listening without interrupting, intentionally focus on the strengths of others, reflect on your accomplishments with a balanced perspective.',
+                    mastery: 'Consistently demonstrate modesty and respect for others, be open to learning from anyone, inspire trust through your lack of arrogance.'
+                },
+                icon: 'fa-seedling',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-motivation': {
+                name: 'Motivation',
+                description: 'The reason or reasons for acting or behaving in a particular way; the general desire or willingness of someone to do something.',
+                related: ['skill-persistence', 'skill-work-ethic', 'skill-leadership', 'skill-resilience', 'skill-vision-wisdom', 'skill-compassion'],
+                interactionDescription: 'Motivation drives Persistence and Work Ethic, is a key aspect of Leadership, helps build Resilience, is often inspired by Vision and Wisdom, and can stem from Compassion for others.',
+                development: {
+                    learn: 'Study different theories of motivation (intrinsic vs. extrinsic), identify your personal values and goals.',
+                    build: 'Set meaningful goals, break down large tasks into smaller steps, celebrate your accomplishments.',
+                    train: 'Experiment with different motivational techniques (like rewards or accountability partners), seek feedback on what motivates you, identify and address demotivating factors.',
+                    mastery: 'Consistently maintain high levels of drive and enthusiasm, inspire and motivate others, overcome obstacles by tapping into your inner drive.'
+                },
+                icon: 'fa-tachometer-alt',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-dependability': {
+                name: 'Dependability',
+                description: 'The quality of being trustworthy and reliable; involves consistently following through on commitments.',
+                related: ['skill-trustworthiness', 'skill-work-ethic', 'skill-teamwork', 'skill-relationship-trust', 'skill-integrity'],
+                interactionDescription: 'Dependability is a core component of Trustworthiness and Integrity, is demonstrated through Work Ethic, is vital for Teamwork, and builds Relationship and Trust.',
+                development: {
+                    learn: 'Understand the importance of reliability in building trust, study time management and organization techniques.',
+                    build: 'Make realistic commitments, communicate clearly about your availability and progress, consistently meet deadlines.',
+                    train: 'Use tools to track your commitments, seek feedback on your reliability, practice saying no when you cannot realistically deliver.',
+                    mastery: 'Consistently be a reliable and trustworthy individual, be the person others can count on, build a reputation for dependability.'
+                },
+                icon: 'fa-anchor',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-resilience': {
+                name: 'Resilience',
+                description: 'The capacity to recover quickly from difficulties; toughness; involves bouncing back from setbacks and adversity.',
+                related: ['skill-persistence', 'skill-adaptability', 'skill-courage', 'skill-motivation'],
+                interactionDescription: 'Resilience is built through Persistence and Courage, is enhanced by Adaptability, and is supported by Motivation.',
+                development: {
+                    learn: 'Study the psychology of resilience, learn coping mechanisms for stress and failure, understand the importance of a support system.',
+                    build: 'Practice reframing challenges as opportunities, develop healthy habits (exercise, sleep, nutrition), build a strong network of supportive relationships.',
+                    train: 'Engage in activities that challenge you and require bouncing back, practice mindfulness and stress reduction techniques, seek feedback on how you handle adversity.',
+                    mastery: 'Consistently recover quickly and effectively from setbacks, maintain a positive outlook in the face of challenges, inspire resilience in others.'
+                },
+                icon: 'fa-mountain',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-persistence': {
+                name: 'Persistence',
+                description: 'Firm or obstinate continuance in a course of action in spite of difficulty or opposition; involves not giving up easily.',
+                related: ['skill-resilience', 'skill-work-ethic', 'skill-motivation', 'skill-problem-solving', 'skill-courage'],
+                interactionDescription: 'Persistence is essential for Resilience, is a key part of Work Ethic, is fueled by Motivation, is required to see Problem Solving through, and demands Courage.',
+                development: {
+                    learn: 'Read stories of individuals who achieved success through persistence, understand the value of delayed gratification, learn techniques for overcoming obstacles.',
+                    build: 'Set challenging goals that require sustained effort, break down large tasks into smaller, manageable steps, celebrate small wins along the way.',
+                    train: 'Practice pushing through discomfort or frustration, seek feedback on your perseverance, identify and address factors that lead you to give up.',
+                    mastery: 'Consistently persevere through significant difficulties, achieve long-term goals through sustained effort, inspire persistence in others.'
+                },
+                icon: 'fa-forward',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-integrity': {
+                name: 'Integrity',
+                description: 'The quality of being honest and having strong moral principles; moral uprightness; involves acting in accordance with your values even when no one is watching.',
+                related: ['skill-trustworthiness', 'skill-dependability', 'skill-justice-fairness', 'skill-leadership', 'skill-persuasion', 'skill-relationship-trust', 'skill-work-ethic'],
+                interactionDescription: 'Integrity is the foundation for Trustworthiness and Dependability, is essential for Justice and Fairness, is a core trait of effective Leadership, enhances Persuasion, builds Relationship and Trust, and underpins a strong Work Ethic.',
+                development: {
+                    learn: 'Study ethical frameworks, identify your core values, read about individuals who demonstrated integrity.',
+                    build: 'Make decisions based on your values, be honest and transparent in your interactions, take responsibility for your actions.',
+                    train: 'Reflect on ethical dilemmas and how you would handle them, seek feedback on your perceived integrity, practice being consistent in your words and actions.',
+                    mastery: 'Consistently act with honesty and strong moral principles, be a trusted and ethical individual, inspire integrity in others.'
+                },
+                icon: 'fa-check-circle',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-trustworthiness': {
+                name: 'Trustworthiness',
+                description: 'The ability to be relied on as honest or truthful; being dependable and reliable. Closely related to integrity and dependability.',
+                related: ['skill-integrity', 'skill-dependability', 'skill-relationship-trust'],
+                interactionDescription: 'Trustworthiness is built on Integrity and Dependability and is crucial for Relationship and Trust Building.',
+                development: {
+                    learn: 'Understand the components of trust (reliability, honesty, competence, benevolence), study how trust is built and broken.',
+                    build: 'Be consistent in your behavior, keep your promises, communicate openly and honestly, admit mistakes.',
+                    train: 'Seek feedback on how trustworthy you are perceived to be, practice active listening and showing genuine care for others, be reliable in small and large matters.',
+                    mastery: 'Consistently earn and maintain the trust of others, be a person of high integrity and reliability, foster a culture of trust.'
+                },
+                icon: 'fa-user-shield',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            },
+            'skill-justice-fairness': {
+                name: 'Justice and Fairness',
+                description: 'Justice is the quality of being fair and reasonable; Fairness is impartial and just treatment or behavior without favoritism or discrimination. Involves treating others equitably and advocating for what is right.',
+                related: ['skill-integrity', 'skill-discernment', 'skill-empathy', 'skill-compassion', 'skill-leadership', 'skill-conflict-resolution', 'skill-vision-wisdom'],
+                interactionDescription: 'Justice and Fairness require Integrity and Discernment, are driven by Empathy and Compassion, are key responsibilities of Leadership, are the goal of Conflict Resolution, and should be part of a guiding Vision and Wisdom.',
+                development: {
+                    learn: 'Study principles of justice and fairness, learn about different social and ethical issues, understand the impact of bias and discrimination.',
+                    build: 'Treat everyone with respect, advocate for fair processes and outcomes, challenge injustice when you see it.',
+                    train: 'Engage in discussions about ethical dilemmas, seek feedback on how fair your decisions and actions are perceived to be, participate in activities that promote equity.',
+                    mastery: 'Consistently act in a just and fair manner, advocate effectively for equity and fairness, become a champion for justice.'
+                },
+                icon: 'fa-balance-scale-right',
+                color: 'red',
+                pillar: 'Character & Emotional Strength'
+            }
+        };
+
+        // DOM elements
+        const skillItems = document.querySelectorAll('.skill-item');
+        const interactionDescriptionDiv = document.getElementById('interaction-description');
+        const skillDetailsDiv = document.getElementById('skill-details');
+        const skillDetailsTitle = document.getElementById('skill-details-title');
+        const skillDetailsDescription = document.getElementById('skill-details-description');
+        const skillPillar = document.getElementById('skill-pillar');
+        const skillIcon = document.getElementById('skill-icon');
+        const skillLearn = document.getElementById('skill-learn');
+        const skillBuild = document.getElementById('skill-build');
+        const skillTrain = document.getElementById('skill-train');
+        const skillMastery = document.getElementById('skill-mastery');
+        const relatedSkillsDiv = document.getElementById('related-skills');
+        const searchInput = document.getElementById('search-skills');
+        const filterThinking = document.getElementById('filter-thinking');
+        const filterCommunication = document.getElementById('filter-communication');
+        const filterCharacter = document.getElementById('filter-character');
+        const filterAll = document.getElementById('filter-all');
+        const printButton = document.getElementById('print-btn');
+
+        // Event listeners for skills
+        skillItems.forEach(item => {
+            item.addEventListener('mouseover', handleMouseOver);
+            item.addEventListener('mouseout', handleMouseOut);
+            item.addEventListener('click', handleClick);
+        });
+
+        // Handle skill mouseover event
+        function handleMouseOver(event) {
+            const hoveredSkillId = event.target.closest('.skill-item').id;
+            const skillInfo = skillData[hoveredSkillId];
+
+            if (skillInfo) {
+                // Highlight the hovered skill
+                event.target.closest('.skill-item').classList.add('highlight');
+
+                // Highlight related skills
+                if (skillInfo.related) {
+                    skillInfo.related.forEach(relatedSkillId => {
+                        const relatedSkillElement = document.getElementById(relatedSkillId);
+                        if (relatedSkillElement) {
+                            relatedSkillElement.classList.add('highlight');
+                        }
+                    });
+                }
+
+                // Display interaction description
+                if (skillInfo.interactionDescription) {
+                    interactionDescriptionDiv.innerHTML = `<i class="fas fa-project-diagram mr-2 text-indigo-500"></i> ${skillInfo.interactionDescription}`;
+                } else {
+                    interactionDescriptionDiv.innerHTML = `<i class="fas fa-info-circle mr-2 text-blue-500"></i> Hovering over ${skillInfo.name}. Click for details.`;
+                }
+
+                interactionDescriptionDiv.classList.add('visible');
+            }
+        }
+
+        // Handle skill mouseout event
+        function handleMouseOut() {
+            // Remove highlight from all skills
+            skillItems.forEach(item => {
+                item.classList.remove('highlight');
+            });
+
+            // Hide interaction description if no skill details are shown
+            if (!skillDetailsDiv.classList.contains('visible')) {
+                interactionDescriptionDiv.classList.remove('visible');
+                setTimeout(() => {
+                    if (!interactionDescriptionDiv.classList.contains('visible')) {
+                        interactionDescriptionDiv.innerHTML = '<i class="fas fa-info-circle mr-2 text-blue-500"></i><span>Hover over a skill to see its connections. Click a skill for detailed development steps.</span>';
+                    }
+                }, 500);
+            }
+        }
+
+        // Handle skill click event
+        function handleClick(event) {
+            const clickedSkillId = event.target.closest('.skill-item').id;
+            const skillInfo = skillData[clickedSkillId];
+
+            // Remove active class from all skills
+            skillItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            if (skillInfo) {
+                // Add active class to clicked skill
+                event.target.closest('.skill-item').classList.add('active');
+
+                // Update skill details
+                skillDetailsTitle.innerHTML = `<i class="fas fa-${skillInfo.icon.split('-')[1]} mr-3 text-${skillInfo.color}-500"></i><span>${skillInfo.name}</span>`;
+                skillDetailsDescription.textContent = skillInfo.description;
+                skillPillar.textContent = skillInfo.pillar;
+                skillPillar.className = `pill bg-${skillInfo.color}-100 text-${skillInfo.color}-700 px-4 py-2 rounded-full text-sm font-medium`;
+                skillIcon.className = `fas ${skillInfo.icon} mr-3 text-${skillInfo.color}-500`;
+
+                // Update development paths
+                skillLearn.textContent = skillInfo.development.learn;
+                skillBuild.textContent = skillInfo.development.build;
+                skillTrain.textContent = skillInfo.development.train;
+                skillMastery.textContent = skillInfo.development.mastery;
+
+                // Update related skills
+                relatedSkillsDiv.innerHTML = '';
+                if (skillInfo.related && skillInfo.related.length > 0) {
+                    skillInfo.related.forEach(relatedId => {
+                        const relatedSkillInfo = skillData[relatedId];
+                        if (relatedSkillInfo) {
+                            const relatedButton = document.createElement('button');
+                            relatedButton.className = `bg-${relatedSkillInfo.color}-100 text-${relatedSkillInfo.color}-700 px-3 py-2 rounded-lg text-sm font-medium mb-2 mr-2 hover:bg-${relatedSkillInfo.color}-200 transition flex items-center`;
+                            relatedButton.innerHTML = `<i class="fas ${relatedSkillInfo.icon} mr-2"></i>${relatedSkillInfo.name}`;
+                            relatedButton.addEventListener('click', () => {
+                                // Find and click the related skill item
+                                const relatedSkillElement = document.getElementById(relatedId);
+                                if (relatedSkillElement) {
+                                    relatedSkillElement.click();
+                                    relatedSkillElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                            });
+                            relatedSkillsDiv.appendChild(relatedButton);
+                        }
+                    });
+                } else {
+                    relatedSkillsDiv.innerHTML = '<p class="text-gray-500">No related skills defined.</p>';
+                }
+
+                // Show details area with animation
+                skillDetailsDiv.classList.add('visible');
+                
+                // Update interaction description
+                interactionDescriptionDiv.innerHTML = `<i class="fas fa-info-circle mr-2 text-blue-500"></i> Viewing details for <strong>${skillInfo.name}</strong>. Hover over other skills to see connections.`;
+                interactionDescriptionDiv.classList.add('visible');
+
+                // Scroll to details if not in view
+                if (!isElementInViewport(skillDetailsDiv)) {
+                    skillDetailsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        }
+
+        // Search functionality
+        searchInput.addEventListener('input', handleSearch);
+
+        function handleSearch(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            
+            skillItems.forEach(item => {
+                const skillId = item.id;
+                const skillInfo = skillData[skillId];
+                const skillName = skillInfo.name.toLowerCase();
+                const skillDescription = skillInfo.description.toLowerCase();
+                
+                if (skillName.includes(searchTerm) || skillDescription.includes(searchTerm)) {
+                    item.style.display = '';
+                    // Highlight the search term in the item text
+                    if (searchTerm.length > 0) {
+                        item.classList.add('bg-yellow-50');
+                    } else {
+                        item.classList.remove('bg-yellow-50');
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Filter functionality
+        filterThinking.addEventListener('click', () => filterSkills('Thinking & Problem Solving'));
+        filterCommunication.addEventListener('click', () => filterSkills('Communication & Collaboration'));
+        filterCharacter.addEventListener('click', () => filterSkills('Character & Emotional Strength'));
+        filterAll.addEventListener('click', () => filterSkills('all'));
+
+        function filterSkills(pillar) {
+            skillItems.forEach(item => {
+                const skillId = item.id;
+                const skillInfo = skillData[skillId];
+                
+                if (pillar === 'all' || skillInfo.pillar === pillar) {
+                    item.closest('li').style.display = '';
+                } else {
+                    item.closest('li').style.display = 'none';
+                }
+            });
+            
+            // Update filter button styles
+            [filterThinking, filterCommunication, filterCharacter, filterAll].forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-offset-2');
+            });
+            
+            if (pillar === 'Thinking & Problem Solving') {
+                filterThinking.classList.add('ring-2', 'ring-blue-500', 'ring-offset-2');
+            } else if (pillar === 'Communication & Collaboration') {
+                filterCommunication.classList.add('ring-2', 'ring-green-500', 'ring-offset-2');
+            } else if (pillar === 'Character & Emotional Strength') {
+                filterCharacter.classList.add('ring-2', 'ring-red-500', 'ring-offset-2');
+            } else {
+                filterAll.classList.add('ring-2', 'ring-gray-500', 'ring-offset-2');
+            }
+        }
+
+        // Print functionality
+        printButton.addEventListener('click', () => {
+            window.print();
+        });
+
+        // Helper function to check if element is in viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Initialize with all filter selected
+        filterAll.classList.add('ring-2', 'ring-gray-500', 'ring-offset-2');
+        
+        // Show interaction description on load
+        setTimeout(() => {
+            interactionDescriptionDiv.classList.add('visible');
+        }, 500);
+
+        // Make details area visible initially with welcome message
+        setTimeout(() => {
+            skillDetailsDiv.classList.add('visible');
+        }, 800);
+        
+        // ====== New Feature: About Section Toggle ======
+        const showAboutBtn = document.getElementById('show-about');
+        const closeAboutBtn = document.getElementById('close-about');
+        const aboutSection = document.getElementById('about-section');
+        
+        showAboutBtn.addEventListener('click', () => {
+            aboutSection.classList.remove('hidden');
+            assessmentSection.classList.add('hidden');
+            resourcesSection.classList.add('hidden');
+        });
+        
+        closeAboutBtn.addEventListener('click', () => {
+            aboutSection.classList.add('hidden');
+        });
+        
+        // ====== New Feature: Assessment Section Toggle ======
+        const showAssessmentBtn = document.getElementById('show-assessment');
+        const closeAssessmentBtn = document.getElementById('close-assessment');
+        const assessmentSection = document.getElementById('assessment-section');
+        const calculateAssessmentBtn = document.getElementById('calculate-assessment');
+        const assessmentResults = document.getElementById('assessment-results');
+        
+        showAssessmentBtn.addEventListener('click', () => {
+            assessmentSection.classList.remove('hidden');
+            aboutSection.classList.add('hidden');
+            resourcesSection.classList.add('hidden');
+        });
+        
+        closeAssessmentBtn.addEventListener('click', () => {
+            assessmentSection.classList.add('hidden');
+        });
+        
+        calculateAssessmentBtn.addEventListener('click', () => {
+            assessmentResults.classList.remove('hidden');
+            // In a real implementation, this would calculate based on actual ratings
+        });
+        
+        // Rating buttons functionality
+        const ratingBtns = document.querySelectorAll('.rating-btn');
+        ratingBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Clear all selected buttons in this group
+                const siblings = this.parentElement.querySelectorAll('.rating-btn');
+                siblings.forEach(sib => {
+                    sib.classList.remove('bg-purple-500', 'text-white');
+                    sib.classList.add('hover:bg-blue-200');
+                });
+                
+                // Select this button
+                this.classList.add('bg-purple-500', 'text-white');
+                this.classList.remove('hover:bg-blue-200');
+            });
+        });
+        
+        // ====== New Feature: Resources Section Toggle ======
+        const showResourcesBtn = document.getElementById('show-resources');
+        const closeResourcesBtn = document.getElementById('close-resources');
+        const resourcesSection = document.getElementById('resources-section');
+        
+        showResourcesBtn.addEventListener('click', () => {
+            resourcesSection.classList.remove('hidden');
+            aboutSection.classList.add('hidden');
+            assessmentSection.classList.add('hidden');
+        });
+        
+        closeResourcesBtn.addEventListener('click', () => {
+            resourcesSection.classList.add('hidden');
+        });
+        
+        // ====== New Feature: Real-World Examples Toggle ======
+        const toggleExamplesBtn = document.getElementById('toggle-examples');
+        const examplesChevron = document.getElementById('examples-chevron');
+        const examplesContent = document.getElementById('examples-content');
+        const exampleTitle = document.getElementById('example-title');
+        const workplaceExample = document.getElementById('workplace-example');
+        const leadershipExample = document.getElementById('leadership-example');
+        const personalExample = document.getElementById('personal-example');
+        
+        toggleExamplesBtn.addEventListener('click', () => {
+            examplesContent.classList.toggle('hidden');
+            examplesChevron.classList.toggle('rotate-90');
+        });
+        
+        // Update examples when a skill is clicked
+        function updateExamples(skillId) {
+            const examples = skillExamples[skillId] || defaultExamples;
+            const skillName = skillData[skillId].name;
+            
+            exampleTitle.textContent = `How ${skillName} Is Applied`;
+            workplaceExample.textContent = examples.workplace;
+            leadershipExample.textContent = examples.leadership;
+            personalExample.textContent = examples.personal;
+        }
+        
+        // Add to original handleClick function
+        const originalHandleClick = handleClick;
+        handleClick = function(event) {
+            const clickedSkillId = event.target.closest('.skill-item').id;
+            originalHandleClick(event);
+            
+            // Update examples for the clicked skill
+            if (skillData[clickedSkillId]) {
+                updateExamples(clickedSkillId);
+            }
+        };
+        
+        // ====== New Feature: Development Plan Toggle ======
+        const toggleDevelopmentPlanBtn = document.getElementById('toggle-development-plan');
+        const planChevron = document.getElementById('plan-chevron');
+        const developmentPlanContent = document.getElementById('development-plan-content');
+        
+        toggleDevelopmentPlanBtn.addEventListener('click', () => {
+            developmentPlanContent.classList.toggle('hidden');
+            planChevron.classList.toggle('rotate-180');
+        });
+        
+        // Add to plan functionality
+        const addToPlanBtn = document.getElementById('add-to-plan');
+        const selectedSkillsDiv = document.getElementById('selected-skills');
+        const developmentActionsDiv = document.getElementById('development-actions');
+        
+        // Set current date as default for date inputs
+        const today = new Date();
+        const startDateInput = document.getElementById('start-date');
+        const endDateInput = document.getElementById('end-date');
+        
+        // Format date as YYYY-MM-DD for input value
+        const formatDate = date => {
+            const yyyy = date.getFullYear();
+            const mm = String(date.getMonth() + 1).padStart(2, '0');
+            const dd = String(date.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        };
+        
+        startDateInput.value = formatDate(today);
+        
+        // Set end date to 3 months from now by default
+        const threeMonthsLater = new Date();
+        threeMonthsLater.setMonth(threeMonthsLater.getMonth() + 3);
+        endDateInput.value = formatDate(threeMonthsLater);
+        
+        // Track selected skills
+        const selectedSkills = new Set();
+        
+        addToPlanBtn.addEventListener('click', () => {
+            // Find which skill is currently active
+            const activeSkill = document.querySelector('.skill-item.active');
+            if (!activeSkill) return;
+            
+            const skillId = activeSkill.id;
+            const skillInfo = skillData[skillId];
+            
+            if (skillInfo && !selectedSkills.has(skillId)) {
+                selectedSkills.add(skillId);
+                
+                // Clear placeholder text if it's the first skill
+                if (selectedSkills.size === 1) {
+                    selectedSkillsDiv.innerHTML = '';
+                }
+                
+                // Add skill to selected skills list
+                const skillElement = document.createElement('div');
+                skillElement.className = `flex justify-between items-center p-2 mb-2 bg-${skillInfo.color}-50 rounded border border-${skillInfo.color}-200`;
+                skillElement.innerHTML = `
+                    <span class="flex items-center">
+                        <i class="fas ${skillInfo.icon} text-${skillInfo.color}-500 mr-2"></i>
+                        ${skillInfo.name}
+                    </span>
+                    <button class="remove-skill text-gray-500 hover:text-red-500" data-skill-id="${skillId}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                selectedSkillsDiv.appendChild(skillElement);
+                
+                // Add development actions
+                const actionElement = document.createElement('div');
+                actionElement.className = `development-action-${skillId} bg-gray-50 p-3 rounded border-l-4 border-${skillInfo.color}-500`;
+                actionElement.innerHTML = `
+                    <h5 class="font-semibold mb-2">${skillInfo.name}</h5>
+                    <p class="text-sm mb-2"><strong>Learn:</strong> ${skillInfo.development.learn}</p>
+                    <p class="text-sm mb-2"><strong>Build:</strong> ${skillInfo.development.build}</p>
+                    <p class="text-sm"><strong>Train:</strong> ${skillInfo.development.train}</p>
+                `;
+                developmentActionsDiv.appendChild(actionElement);
+                
+                // Add event listener for remove button
+                skillElement.querySelector('.remove-skill').addEventListener('click', function() {
+                    const skillId = this.dataset.skillId;
+                    selectedSkills.delete(skillId);
+                    this.closest('div').remove();
+                    
+                    // Remove corresponding development action
+                    const actionElement = document.querySelector(`.development-action-${skillId}`);
+                    if (actionElement) actionElement.remove();
+                    
+                    // Restore placeholder if no skills left
+                    if (selectedSkills.size === 0) {
+                        selectedSkillsDiv.innerHTML = 'Click on skills above and press "Add to Plan" to include them here.';
+                        developmentActionsDiv.innerHTML = `
+                            <div class="bg-gray-50 p-3 rounded">
+                                <p class="text-gray-500 italic">Your personalized development actions will appear here based on the skills you select.</p>
+                            </div>
+                        `;
+                    }
+                });
+            }
+        });
+        
+        // Generate development plan
+        const generatePlanBtn = document.getElementById('generate-plan');
+        generatePlanBtn.addEventListener('click', () => {
+            if (selectedSkills.size === 0) {
+                alert('Please select at least one skill to include in your development plan.');
+                return;
+            }
+            
+            // In a real implementation, this would generate a PDF or other downloadable format
+            alert('Your development plan would be generated here. In a complete implementation, this would create a downloadable PDF with your customized plan.');
+        });
+        
+        // ====== Additional Technical Features ======
+        
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const moonIcon = darkModeToggle.querySelector('i');
+        let darkMode = false;
+        
+        darkModeToggle.addEventListener('click', () => {
+            darkMode = !darkMode;
+            
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                document.body.style.backgroundColor = '#1a202c';
+                document.body.style.color = '#e2e8f0';
+                moonIcon.classList.remove('fa-moon');
+                moonIcon.classList.add('fa-sun');
+            } else {
+                document.body.classList.remove('dark-mode');
+                document.body.style.backgroundColor = '#f8fafc';
+                document.body.style.color = '#1e293b';
+                moonIcon.classList.remove('fa-sun');
+                moonIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Back to top
+        const backToTopBtn = document.getElementById('back-to-top');
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.opacity = '1';
+            } else {
+                backToTopBtn.style.opacity = '0.5';
+            }
+            
+            // Update scroll position indicator
+            const scrollPosition = document.getElementById('scroll-position');
+            const currentPillar = document.getElementById('current-pillar');
+            
+            // Determine which section is most visible in the viewport
+            const thinkingSection = document.querySelector('.pillar-thinking');
+            const communicationSection = document.querySelector('.pillar-communication');
+            const characterSection = document.querySelector('.pillar-character');
+            
+            const thinkingRect = thinkingSection.getBoundingClientRect();
+            const communicationRect = communicationSection.getBoundingClientRect();
+            const characterRect = characterSection.getBoundingClientRect();
+            
+            // Check which section is most visible
+            if (thinkingRect.top < window.innerHeight && thinkingRect.bottom > 0) {
+                currentPillar.textContent = 'Thinking & Problem Solving';
+                currentPillar.className = 'font-semibold text-blue-600';
+            } else if (communicationRect.top < window.innerHeight && communicationRect.bottom > 0) {
+                currentPillar.textContent = 'Communication & Collaboration';
+                currentPillar.className = 'font-semibold text-green-600';
+            } else if (characterRect.top < window.innerHeight && characterRect.bottom > 0) {
+                currentPillar.textContent = 'Character & Emotional Strength';
+                currentPillar.className = 'font-semibold text-red-600';
+            } else {
+                currentPillar.textContent = 'All Pillars';
+                currentPillar.className = 'font-semibold text-gray-600';
+            }
+        });
+        
+        // Cookie consent
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptCookiesBtn = document.getElementById('accept-cookies');
+        
+        // Check if user has already accepted cookies
+        if (localStorage.getItem('cookiesAccepted') !== 'true') {
+            cookieBanner.style.display = 'flex';
+        } else {
+            cookieBanner.style.display = 'none';
+        }
+        
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.style.display = 'none';
+        });
+        
+        // Style tooltips
+        document.head.insertAdjacentHTML('beforeend', `
+            <style>
+                .tooltip {
+                    position: relative;
+                }
+                
+                .tooltip-text {
+                    visibility: hidden;
+                    width: 120px;
+                    background-color: #333;
+                    color: #fff;
+                    text-align: center;
+                    border-radius: 6px;
+                    padding: 5px;
+                    position: absolute;
+                    z-index: 1;
+                    right: 130%;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                    font-size: 14px;
+                    font-weight: normal;
+                }
+                
+                .tooltip:hover .tooltip-text {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                
+                @media print {
+                    .no-print {
+                        display: none !important;
+                    }
+                    
+                    .print-only {
+                        display: block !important;
+                    }
+                }
+                
+                @media (max-width: 768px) {
+                    .tooltip-text {
+                        display: none;
+                    }
+                }
+            </style>
+        `);
+        
+        // Add a loading indicator (simulated for demonstration)
+        window.addEventListener('load', () => {
+            // Create loading overlay
+            const loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'fixed inset-0 bg-white flex items-center justify-center z-50';
+            loadingOverlay.innerHTML = `
+                <div class="text-center">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                    <p class="text-xl text-gray-700">Loading Structural Skills Framework...</p>
+                </div>
+            `;
+            document.body.appendChild(loadingOverlay);
+            
+            // Remove loading overlay after 1 second (simulating load time)
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => {
+                    loadingOverlay.remove();
+                }, 500);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
